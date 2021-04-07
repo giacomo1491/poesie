@@ -1,7 +1,9 @@
-function SinglePoem() {
+function SinglePoem(props) {
   return (
     <div className="singlepoem--wrapper">
-      <h4>Single Poem</h4>
+      <h4>{props.title}</h4>
+
+      <p>{props.text}</p>
     </div>
   );
 }

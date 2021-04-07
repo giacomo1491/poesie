@@ -1,0 +1,18 @@
+{
+  "poem": {
+    "title": "Poem",
+    "text": "Lorem ipsum"
+  },
+  "poem1": {
+    "title": "Poem 1",
+    "text": "Lorem ipsum 1"
+  },
+  "poem2": {
+    "title": "Poem 2",
+    "text": "Lorem ipsum 2"
+  },
+  "poem3": {
+    "title": "Poem 3",
+    "text": "Lorem ipsum 3"
+  }
+}

@@ -1,8 +1,8 @@
 import "./poems.css";
-import { BrowserRouter as Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import PoemsNav from "./poemsNav";
 import SinglePoem from "./singlePoem";
-// import poemData from "../data";
+import poemData from "../data.json";
 
 function Poems() {
   return (
@@ -14,17 +14,17 @@ function Poems() {
 
       {/* ROUTING */}
       <Switch>
-        <Route path="/">
-          <SinglePoem />
+        <Route exact path="/poem1">
+          <SinglePoem title={poemData.poem1.title} text={poemData.poem1.text} />
         </Route>
-        <Route path="/poem1">
-          <SinglePoem />
+        <Route exact path="/poem2">
+          <SinglePoem title={poemData.poem2.title} text={poemData.poem2.text} />
         </Route>
-        <Route path="/poem2">
-          <SinglePoem />
+        <Route exact path="/poem3">
+          <SinglePoem title={poemData.poem3.title} text={poemData.poem3.text} />
         </Route>
-        <Route path="/poem3">
-          <SinglePoem />
+        <Route exact path="/">
+          <SinglePoem title={poemData.poem.title} text={poemData.poem.text} />
         </Route>
       </Switch>
     </div>

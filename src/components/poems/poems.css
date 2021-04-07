@@ -1,7 +1,7 @@
 .poems--wrapper {
   display: flex;
   flex-direction: column;
-  border: solid 1px red;
+  /* border: solid 1px red; */
 }
 
 /* NAVIGATION */

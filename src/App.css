@@ -1,3 +1,11 @@
+:root {
+  --main-white: white;
+  --main-green: #9ede73;
+  --main-yellow: #f7ea00;
+  --main-orange: #e48900;
+  --main-red: #be0000;
+}
+
 .App {
   display: flex;
   flex-direction: column;

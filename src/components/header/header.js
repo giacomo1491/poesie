@@ -1,9 +1,11 @@
 import "./header.css";
+import Nav from './nav'
 
 function Header() {
   return (
     <div className="header--wrapper">
-      <h1>Poesie</h1>
+      <Nav />
+      <h2>Poesie</h2>
     </div>
   );
 }

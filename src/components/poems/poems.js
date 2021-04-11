@@ -7,8 +7,6 @@ import poemData from "../data.json";
 function Poems() {
   return (
     <div className="poems--wrapper">
-      <h3>Poems</h3>
-
       {/* NAVIGATION */}
       <PoemsNav />
 

@@ -5,8 +5,7 @@
   },
 
   "poem1": {
-    "title": "Poem 1",
-    "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, explicabo alias ipsum illum exercitationem minus dolorem molestias debitis fugit nostrum porro, dolor, perferendis eos. Odit unde vero minus consectetur nostrum sunt! Saepe veniam obcaecati expedita nam vel? Ab, dolores ratione cupiditate voluptatibus molestias, nisi aliquam, praesentium quia enim rerum perferendis laborum sint! Temporibus, saepe quos ducimus enim at dicta consequuntur quas velit debitis laudantium corrupti numquam sunt, modi reiciendis dolorem labore unde aut vitae odio natus iusto voluptates. Odit similique, aliquam in earum praesentium tempore ipsum, tenetur adipisci quas molestias hic quod cupiditate sed provident non delectus cum recusandae facere?"
+    "title": "Poelestias debitis fugit nostrum porro, dolor, perferendis eos. Odit unde vero minus consectetur nostrum sunt! Saepe veniam obcaecati expedita nam vel? Ab, dolores ratione cupiditate voluptatibus molestias, nisi aliquam, praesentium quia enim rerum perferendis laborum sint! Temporibus, saepe quos ducimus enim at dicta consequuntur quas velit debitis laudantium corrupti numquam sunt, modi reiciendis dolorem labore unde aut vitae odio natus iusto voluptates. Odit similique, aliquam in earum praesentium tempore ipsum, tenetur adipisci quas molestias hic quod cupiditate sed provident non delectus cum recusandae facere?"
   },
   "poem2": {
     "title": "Poem 2",
@@ -14,6 +13,6 @@
   },
   "poem3": {
     "title": "Poem 3",
-    "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, explicabo alias ipsum illum exercitationem minus dolorem molestias debitis fugit nostrum porro, dolor, perferendis eos. Odit unde vero minus consectetur nostrum sunt! Saepe veniam obcaecati expedita nam vel? Ab, dolores ratione cupiditate voluptatibus molestias, nisi aliquam, praesentium quia enim rerum perferendis laborum sint! Temporibus, saepe quos ducimus enim at dicta consequuntur quas velit debitis laudantium corrupti numquam sunt, modi reiciendis dolorem labore unde aut vitae odio natus iusto voluptates. Odit similique, aliquam in earum praesentium tempore ipsum, tenetur adipisci quas molestias hic quod cupiditate sed provident non delectus cum recusandae facere?"
+    "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Dolorum,\n explicabo alias ipsum illum exercitationem minus dolorem molestias debitis fugit nostrum porro, dolor, perferendis eos. Odit unde vero minus consectetur nostrum sunt! Saepe \n\n\nveniam obcaecati expedita nam vel? Ab, dolores ratione cupiditate voluptatibus molestias, nisi aliquam, praesentium quia enim rerum perferendis laborum sint! Temporibus, saepe quos ducimus enim at dicta consequuntur quas velit debitis laudantium corrupti numquam sunt, modi reiciendis dolorem labore unde aut vitae odio natus iusto voluptates. Odit similique, aliquam in earum praesentium tempore ipsum, tenetur adipisci quas molestias hic quod cupiditate sed provident non delectus cum recusandae facere?"
   }
 }

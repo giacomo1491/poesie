@@ -5,16 +5,13 @@ function PoemsNav() {
     <nav className="poemnav--wrapper">
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/acque">Di acque</Link>
         </li>
         <li>
-          <Link to="/poem1">Poem 1</Link>
+          <Link to="/terre">Di terre</Link>
         </li>
         <li>
-          <Link to="/poem2">Poem 2</Link>
-        </li>
-        <li>
-          <Link to="/poem3">Poem 3</Link>
+          <Link to="/amori">Di amori</Link>
         </li>
       </ul>
     </nav>

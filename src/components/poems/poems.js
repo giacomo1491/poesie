@@ -12,17 +12,14 @@ function Poems() {
 
       {/* ROUTING */}
       <Switch>
-        <Route exact path="/poem1">
+        <Route exact path="/acque">
+          <SinglePoem title={poemData.DiAcque.title} text={poemData.DiAcque.text} />
+        </Route>
+        <Route exact path="/terre">
           <SinglePoem title={poemData.poem1.title} text={poemData.poem1.text} />
         </Route>
-        <Route exact path="/poem2">
+        <Route exact path="/amori">
           <SinglePoem title={poemData.poem2.title} text={poemData.poem2.text} />
-        </Route>
-        <Route exact path="/poem3">
-          <SinglePoem title={poemData.poem3.title} text={poemData.poem3.text} />
-        </Route>
-        <Route exact path="/">
-          <SinglePoem title={poemData.poem.title} text={poemData.poem.text} />
         </Route>
       </Switch>
     </div>

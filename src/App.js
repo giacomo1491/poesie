@@ -9,8 +9,8 @@ function App() {
     <Router>
       <div className='App'>
         <Header />
-        <Main />
-        <Footer />
+        {/* <Main /> */}
+        {/* <Footer /> */}
       </div>
     </Router>
   );

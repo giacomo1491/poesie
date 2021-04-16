@@ -10,9 +10,9 @@ function Nav() {
           <a href='#poemsNav'>Poesie</a>
         </li>
         <li>
-          <Link to='/Preface'>
-            <a href='#preface'>Prefazione</a>
-          </Link>
+          {/* <Link to='/Preface'> */}
+            <a href='/'>Prefazione</a>
+          {/* </Link> */}
         </li>
 
         <li>

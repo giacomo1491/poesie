@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function PoemsNav() {
   return (
-    <nav className="poemnav--wrapper">
+    <nav className="poemnav--wrapper" id="poemsNav">
       <ul>
         <li>
           <Link to="/acque">Di acque</Link>

@@ -1,70 +1,83 @@
-export const QuestoIlGiorno = () => {
-    return (
-      <div className='poem-wrapper'>
-        <h4 className='poem-title'>E' questo il giorno</h4>
-        <p>
-          <span className=' poem-part part1'>
-            Danzi di mattinale lavorio trampoliere nello stagno dove l'acqua
-            margina gli scirpi eppure istanti fa le ali tue spiegate a rotta di
-            stormo comandavano il volo e planavano su un nuovo giorno
-          </span>
-  
-          <span className='part2'>
-            Il tempo, il giorno che sarà per te? Per noi è icona ogni volta cade e
-            si frantuma granelli di memoria ciò che resta si specchiano l'un
-            l'altro donandoci l'abbaglio, la finzione
-          </span>
-  
-          <span className='part3'>
-            Per te non sarà questo credere disilluso e doloroso ma impegno ad
-            esserci nell'istante che ti dice "Io t'ho voluto" semplice esercizio
-            di risposta sentendoti genitore ed anche figlio amante e amato nello
-            strano mondo che t'avvolge
-          </span>
-  
-          <span className='part4'>
-            Raspi il fango e voli e voli per tornare al fango nutrendo il tuo
-            orizzonte è questo il giorno non si frantuma ma sempre ti risponde ne
-            senti le carezze sulle piume ti vuole ancora e sempre con tutta la sua
-            luce.
-          </span>
-        </p>
-      </div>
-    );
-  };
-  
-  export const QuestoIlGiorno2 = () => {
-    return (
-      <div className='poem-wrapper'>
-        <h4 className='poem-title'>E' questo il giorno</h4>
-        <p>
-          <span className=' poem-part part1'>
-            Danzi di mattinale lavorio trampoliere nello stagno dove l'acqua
-            margina gli scirpi eppure istanti fa le ali tue spiegate a rotta di
-            stormo comandavano il volo e planavano su un nuovo giorno
-          </span>
-  
-          <span className='part2'>
-            Il tempo, il giorno che sarà per te? Per noi è icona ogni volta cade e
-            si frantuma granelli di memoria ciò che resta si specchiano l'un
-            l'altro donandoci l'abbaglio, la finzione
-          </span>
-  
-          <span className='part3'>
-            Per te non sarà questo credere disilluso e doloroso ma impegno ad
-            esserci nell'istante che ti dice "Io t'ho voluto" semplice esercizio
-            di risposta sentendoti genitore ed anche figlio amante e amato nello
-            strano mondo che t'avvolge
-          </span>
-  
-          <span className='part4'>
-            Raspi il fango e voli e voli per tornare al fango nutrendo il tuo
-            orizzonte è questo il giorno non si frantuma ma sempre ti risponde ne
-            senti le carezze sulle piume ti vuole ancora e sempre con tutta la sua
-            luce.
-          </span>
-        </p>
-      </div>
-    );
-  };
-  
+export const UnaVisivaMusicaAscolto = () => {
+  return (
+    <div className='poem-wrapper'>
+      <h4 className='poem-title'>Una visiva musica ascolto</h4>
+      <p>
+        <span className=' poem-part part1'>
+          Mi porta il vento profumi di nascite arboree lucenza adamantina
+          sovrasta tra questi crinali
+        </span>
+
+        <span className='part2'>
+          e con l’andare del passo mi accorgo che un cielo attento dirige
+          euforbie scarlatte che frusciano lentischi di verde che vibrano e
+          ginepri s’intonano e cisti e nessuno che vuol sovrastare
+        </span>
+
+        <span className='part3'>
+          una visiva musica ascolto di movenze armoniche tutto al vento di anime
+          inquiete e meste al contempo
+        </span>
+
+        <span className='part4'>
+          mai vista tanta gente delicata sfilare al mio lato spighe e avene
+          ondeggiano dorate di docile degnezza la mia mano le sfiora
+        </span>
+        <span className='part5'>
+          parvenze di donne di andata agricola stirpe ne sento ansie e canzoni
+          giungere in brevi bagliori
+        </span>
+        <span className='part6'>
+          te loro figlio drappeggiato di ombra che stoni solcando questo
+          luminoso sentiero
+        </span>
+        <span className='part7'>
+          tutto ciò che non mi hai detto puoi dirmelo ora che una visiva musica
+          ascolto e la mia mano ti sfiora.
+        </span>
+      </p>
+    </div>
+  );
+};
+
+export const QuestoIlGiorno2 = () => {
+  return (
+    <div className='poem-wrapper'>
+    <h4 className='poem-title'>Una visiva musica ascolto</h4>
+    <p>
+      <span className=' poem-part part1'>
+        Mi porta il vento profumi di nascite arboree lucenza adamantina
+        sovrasta tra questi crinali
+      </span>
+
+      <span className='part2'>
+        e con l’andare del passo mi accorgo che un cielo attento dirige
+        euforbie scarlatte che frusciano lentischi di verde che vibrano e
+        ginepri s’intonano e cisti e nessuno che vuol sovrastare
+      </span>
+
+      <span className='part3'>
+        una visiva musica ascolto di movenze armoniche tutto al vento di anime
+        inquiete e meste al contempo
+      </span>
+
+      <span className='part4'>
+        mai vista tanta gente delicata sfilare al mio lato spighe e avene
+        ondeggiano dorate di docile degnezza la mia mano le sfiora
+      </span>
+      <span className='part5'>
+        parvenze di donne di andata agricola stirpe ne sento ansie e canzoni
+        giungere in brevi bagliori
+      </span>
+      <span className='part6'>
+        te loro figlio drappeggiato di ombra che stoni solcando questo
+        luminoso sentiero
+      </span>
+      <span className='part7'>
+        tutto ciò che non mi hai detto puoi dirmelo ora che una visiva musica
+        ascolto e la mia mano ti sfiora.
+      </span>
+    </p>
+  </div>
+);
+};

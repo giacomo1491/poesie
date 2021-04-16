@@ -8,12 +8,12 @@
 .poemnav--wrapper {
   display: flex;
   max-width: 100%;
-  margin: 5px 5px 5px 30px;
+  margin: 45px 5px 5px 35px;
 }
 
 @media only screen and (max-width: 350px) {
   .poemnav--wrapper {
-    margin: 5px 5px 5px 15px;
+    margin: 25px 5px 5px 15px;
   }
 }
 
@@ -35,6 +35,7 @@
 .poemnav--wrapper ul a {
   text-decoration: none;
   font-weight: bold;
+  font-size: larger;
   color: var(--main-red);
 }
 

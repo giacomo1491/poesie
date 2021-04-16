@@ -1,4 +1,4 @@
-export const ÈQuestoIlGiorno = () => {
+export const EQuestoIlGiorno = () => {
   return (
     <div className='poem-wrapper'>
       <h4 className='poem-title'>E' questo il giorno</h4>
@@ -33,7 +33,7 @@ export const ÈQuestoIlGiorno = () => {
   );
 };
 
-export const ÈQuestoIlGiorno2 = () => {
+export const EQuestoIlGiorno2 = () => {
   return (
     <div className='poem-wrapper'>
       <h4 className='poem-title'>E' questo il giorno</h4>

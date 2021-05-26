@@ -1,6 +1,7 @@
 import './header.css';
 import Nav from './navbar/nav';
 
+
 function Header() {
   return (
     <div className='header--wrapper'>
@@ -9,6 +10,7 @@ function Header() {
         <h2>Al Porto</h2>
       </div>
       <div className='header--slide2'>
+      
         <Nav />
         {/* <p className='header-text'>
           “Crea parole <br /> Le parole sono vibrazioni della natura <br /> Così

@@ -9,14 +9,23 @@ function Libro() {
     console.log('Current page: ' + e.data);
   }, []);
   return (
-    <HTMLFlipBook onFlip={onFlip} width={300} height={500} className='FlipBook'>
-      <Page number='1'>Page text</Page>
-      <Page number='2' children='we'>
-        Page text
-      </Page>
-      <Page number='3'>Page text</Page>
-      <Page number='4'>Page text</Page>
-    </HTMLFlipBook>
+    <div className='BookOpened'>
+      <HTMLFlipBook
+        onFlip={onFlip}
+        width={600}
+        height={700}
+        className='FlipBook'
+      >
+        <Page number='1'>Page text</Page>
+        <Page number='2' children='we'>
+          Page text
+        </Page>
+        <Page number='3'>Page text</Page>
+        <Page number='4'>Page text</Page>
+        <Page number='5'>Page text</Page>
+        <Page number='6'>Page text</Page>
+      </HTMLFlipBook>
+    </div>
   );
 }
 

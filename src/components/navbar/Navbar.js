@@ -17,7 +17,7 @@ function Navbar() {
       </li>
       <li>
         <NavLink to='/about' activeClassName='selected'>
-          <p>ABOUT</p>
+          <p>PREFAZIONE</p>
         </NavLink>
       </li>
       <li>

@@ -10,25 +10,31 @@ function Home() {
           <div className='front'>
             <div className='cover'>
               <section>
-                <p style={{ fontSize: '2.1vw' }} className='author'>
+                <p style={{ fontSize: '1.5vw' }} className='author'>
                   Duilia Dias
                 </p>
                 <br />
                 <br />
                 <br />
                 <p
-                  style={{ fontWeight: 'bolder', fontSize: '3vw' }}
+                  style={{ fontWeight: 'bolder', fontSize: '2.5vw' }}
                   className='author'
                 >
                   Al Porto
                 </p>
                 <br />
-                <br />
                 <p
                   style={{ fontFamily: 'italic', fontSize: '1.5vw' }}
                   className='author'
                 >
-                  Di acque, di terre, di amori
+                  Poesie
+                </p>
+
+                <p
+                  style={{ fontFamily: 'italic', fontSize: '1.5vw' }}
+                  className='author'
+                >
+                  di acque, di terre, di amori
                 </p>
               </section>
             </div>

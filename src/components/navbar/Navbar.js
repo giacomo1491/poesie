@@ -1,5 +1,6 @@
 import './navbar.scss';
 import { NavLink } from 'react-router-dom';
+import Contatti from "./contatti/Contatti";
 
 
 function Navbar() {
@@ -20,11 +21,8 @@ function Navbar() {
           <p>PREFAZIONE</p>
         </NavLink>
       </li>
-      <li>
-        <NavLink to='/contatti' activeClassName='selected'>
-          <p>CONTATTI</p>
-        </NavLink>
-      </li>
+      <Contatti />
+   
   
     
     </div>

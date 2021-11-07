@@ -4,8 +4,8 @@ import './home.scss';
 
 function Home() {
   return (
-    <NavLink to='/libro'>
-      <div className='Home'>
+    <div className='Home'>
+      <NavLink to='/libro'>
         <div className='book'>
           <div className='front'>
             <div className='cover'>
@@ -47,8 +47,8 @@ function Home() {
             </h2>
           </div>
         </div>
-      </div>
-    </NavLink>
+      </NavLink>
+    </div>
   );
 }
 

@@ -1,6 +1,6 @@
 import './main.scss';
 import { Switch, Route } from 'react-router-dom';
-import Preface from './preface/Preface';
+import Preface from './libro/prefazione/Prefazione';
 import Libro from './libro/Libro';
 import Home from './home/Home';
 
@@ -10,7 +10,7 @@ function Main() {
   return (
     <div className='Main'>
       <Switch>
-        <Route exact path='/Preface'>
+        <Route exact path='/prefazione'>
           <Preface />
         </Route>
         <Route exact path='/libro'>

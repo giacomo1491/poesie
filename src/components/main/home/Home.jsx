@@ -1,10 +1,18 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import Contatti from './contatti/Contatti';
+import Navbar from '../../navbar/Navbar';
 import './home.scss';
+import Poems from "../libro/prefazione/Poems";
 
 function Home() {
+  const navBanners = ['libro'];
+
   return (
     <div className='Home'>
+      <Navbar navBanners={navBanners} />
+      <Contatti />
+      <Poems />
       <NavLink to='/libro'>
         <div className='book'>
           <div className='front'>

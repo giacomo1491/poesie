@@ -1,6 +1,8 @@
 import HTMLFlipBook from 'react-pageflip';
 import './libro.scss';
 import Page from './page/Page';
+import Navbar from '../../navbar/Navbar';
+import Prefazione from './prefazione/Prefazione'
 import React, { useCallback } from 'react';
 // https://www.npmjs.com/package/react-pageflip
 // https://reactjs.org/docs/forwarding-refs.html
@@ -8,7 +10,13 @@ function Libro() {
   const onFlip = useCallback((e) => {
     console.log('Current page: ' + e.data);
   }, []);
+
+  const navBanners = ['home','prefazione','postfazione'];
+
   return (
+    <>
+        <Navbar navBanners={navBanners}/>
+
     <div className='BookOpened'>
       <HTMLFlipBook
         onFlip={onFlip}
@@ -49,6 +57,7 @@ Qualcuno un giorno disse: “Il poeta è un pittore che dipinge con la penna”,
         <Page number='6'>Page text</Page>
       </HTMLFlipBook>
     </div>
+    </>
   );
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import mail from '../../../assets/mail.png';
+import mail from '../../../../assets/mail.png';
 import './contatti.scss';
 
 function Contatti() {

@@ -1,30 +1,31 @@
 import './navbar.scss';
 import { NavLink } from 'react-router-dom';
-import Contatti from "./contatti/Contatti";
 
-
-function Navbar() {
+function Navbar(props) {
   return (
     <div className='Navbar'>
-      <li>
+      {/* <li>
         <NavLink to='/' exact={true} activeClassName='selected'>
           <p>HOME</p>
         </NavLink>
-      </li>
-      <li>
+      </li> */}
+      {/* <li>
         <NavLink to='/libro' activeClassName='selected'>
           <p>LIBRO</p>
         </NavLink>
-      </li>
-      <li>
-        <NavLink to='/about' activeClassName='selected'>
-          <p>PREFAZIONE</p>
-        </NavLink>
-      </li>
-      <Contatti />
-   
-  
-    
+      </li> */}
+      <ul>
+        {props.navBanners.map((banner, index) => (
+          <li key={index}>
+            <NavLink
+              to={banner === 'home' ? '' : banner}
+              activeClassName='selected'
+            >
+              <p>{banner}</p>
+            </NavLink>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

@@ -1,21 +1,19 @@
-.BookOpened{
+.BookOpened {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-
 .demoPage {
   border: 1px solid black;
-  min-width: 40vw !important;
+  // min-width: 40vw !important;
   background-color: white;
-
+  padding: 4%;
 }
 
 .FlipBook {
   // border: 1px solid red;
   // background-color: white;
   // min-width: 20vw !important;
-
 }

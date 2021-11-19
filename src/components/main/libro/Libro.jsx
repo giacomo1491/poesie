@@ -9,19 +9,18 @@ import React, { useCallback } from 'react';
 function Libro() {
   const [poems, setPoems] = useState([]);
 
-	const backendUrl = 'http://localhost:9000'
+  const backendUrl = 'http://localhost:9000';
 
-	const loadPoems = async () => {
-		const response = await fetch(backendUrl);
-		const poems = await response.json();
-		poems.forEach(user => user.isEditingEmail = false);
-		setPoems(poems);
-	}
+  const loadPoems = async () => {
+    const response = await fetch(backendUrl);
+    const poems = await response.json();
+    setPoems(poems);
+  };
 
-	useEffect(() => {
-		loadPoems();
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+  useEffect(() => {
+    loadPoems();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const onFlip = useCallback((e) => {
     console.log('Current page: ' + e.data);
   }, []);
@@ -35,27 +34,26 @@ function Libro() {
       <div className='BookOpened'>
         <HTMLFlipBook
           onFlip={onFlip}
-          width={600}
-          height={700}
+          width={700}
+          height={800}
           className='FlipBook'
         >
           {poems.map((poem, index) => {
             return (
-              <Page key={index} pageNumber={index + 1}>
-                <h2 style={{ color: 'red' }}>{poem.title}</h2>
-                <br /><br />
-
-                <p>
-                  {poem.text.split('\n').map((item, index) => {
-                    return (
-                      <>
-                        <p key={index}>{item}</p>
-                        <br />
-                      </>
-                    );
-                  })}
-                </p>
-              </Page>
+              <Page
+                idStyle={`page${index + 1}`}
+                key={index}
+                pageNumber={index + 1}
+                title={poem.title}
+                text={poem.text.split('\n').map((item, index) => {
+                  return (
+                    <>
+                      <p key={index}>{item}</p>
+                      <br />
+                    </>
+                  );
+                })}
+              ></Page>
             );
           })}
         </HTMLFlipBook>

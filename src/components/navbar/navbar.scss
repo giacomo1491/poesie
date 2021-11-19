@@ -2,9 +2,9 @@
   width: 100%;
   height: 6vh;
   display: flex;
+  flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  // background-color: green;
   list-style-type: none;
   li {
     margin: 0 2%;

@@ -38,38 +38,24 @@ function Libro() {
           height={800}
           className='FlipBook'
         >
-          {poems.map((poem, poemIndex) => {
-            const arrOfPoemsLines = poem.text.split('\n');
-            const batchSize = 16;
-            const amountBatches = Math.ceil(arrOfPoemsLines.length / batchSize);
-            const batches = [];
-            for (let i = 0; i < amountBatches; i++) {
-              const batch = arrOfPoemsLines.slice(
-                i * batchSize,
-                i * batchSize + batchSize
-              );
-              batches.push(batch);
-            }
-
-            return batches.map((page, pageIndex) => {
-              console.log(poemIndex, pageIndex);
-              return (
-                <Page
-                  idStyle={`page${1 + poemIndex}`}
-                  key={pageIndex}
-                  pageNumber={`${1 + poemIndex}.${pageIndex}`}
-                  title={poem.title}
-                  text={page.map((line, index) => {
-                    return (
-                      <>
-                        <p key={index}>{line}</p>
-                        <br />
-                      </>
-                    );
-                  })}
-                />
-              );
-            });
+          {poems.map((poem, index) => {
+              
+            return (
+              <Page
+                idStyle={`page${index + 1}`}
+                key={index}
+                pageNumber={index + 1}
+                title={poem.title}
+                text={poem.text.split('\n').map((item, index) => {
+                  return (
+                    <>
+                      <p key={index}>{item}</p>
+                      <br />
+                    </>
+                  );
+                })}
+              ></Page>
+            );
           })}
         </HTMLFlipBook>
       </div>

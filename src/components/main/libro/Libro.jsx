@@ -52,13 +52,12 @@ function Libro() {
             }
 
             return batches.map((page, pageIndex) => {
-              console.log(poemIndex, pageIndex);
               return (
                 <Page
                   idStyle={`page${1 + poemIndex}`}
                   key={pageIndex}
                   pageNumber={`${1 + poemIndex}.${pageIndex}`}
-                  title={poem.title}
+                  title={pageIndex === 0 ? poem.title : ''}
                   text={page.map((line, index) => {
                     return (
                       <>

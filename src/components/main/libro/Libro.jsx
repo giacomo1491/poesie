@@ -25,7 +25,7 @@ function Libro() {
     console.log('Current page: ' + e.data);
   }, []);
 
-  const navBanners = ['home', 'prefazione', 'postfazione'];
+  const navBanners = ['home', 'indice', 'prefazione', 'postfazione'];
 
   return (
     <>

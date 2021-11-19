@@ -1,6 +1,7 @@
 import './main.scss';
 import { Switch, Route } from 'react-router-dom';
 import Preface from './libro/prefazione/Prefazione';
+import Indice from './libro/indice/Indice';
 import Libro from './libro/Libro';
 import Home from './home/Home';
 
@@ -10,6 +11,9 @@ function Main() {
   return (
     <div className='Main'>
       <Switch>
+      <Route exact path='/indice'>
+          <Indice />
+        </Route>
         <Route exact path='/prefazione'>
           <Preface />
         </Route>

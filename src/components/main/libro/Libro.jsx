@@ -56,7 +56,7 @@ function Libro() {
                 <Page
                   idStyle={`page${1 + poemIndex}`}
                   key={pageIndex}
-                  pageNumber={`${1 + poemIndex}.${pageIndex}`}
+                  pageNumber={`${1 + poemIndex}.${pageIndex + 1}`}
                   title={pageIndex === 0 ? poem.title : ''}
                   text={page.map((line, index) => {
                     return (

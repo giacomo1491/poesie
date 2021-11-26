@@ -1,8 +1,6 @@
 import './main.scss';
 import { Switch, Route } from 'react-router-dom';
-import Preface from './libro/prefazione/Prefazione';
-import Indice from './libro/indice/Indice';
-import Libro from './libro/Libro';
+import Book from './libro/Book';
 import Home from './home/Home';
 
 // https://www.npmjs.com/package/react-pageflip
@@ -11,14 +9,8 @@ function Main() {
   return (
     <div className='Main'>
       <Switch>
-      <Route exact path='/indice'>
-          <Indice />
-        </Route>
-        <Route exact path='/prefazione'>
-          <Preface />
-        </Route>
         <Route exact path='/libro'>
-          <Libro />
+          <Book />
         </Route>
         <Route exact path='/'>
           <Home />

@@ -1,57 +1,28 @@
 import { useState, useEffect, useRef } from 'react';
 import HTMLFlipBook from 'react-pageflip';
-import './libro.scss';
+import './book.scss';
 import Page from './page/Page';
 import Navbar from '../../navbar/Navbar';
 import React, { useCallback } from 'react';
 // import indice from './indice.json';
 // https://www.npmjs.com/package/react-pageflip
 // https://reactjs.org/docs/forwarding-refs.html
-function Libro() {
-  const [acque, setAcque] = useState([]);
-  const [terre, setTerre] = useState([]);
-  const [amori, setAmori] = useState([]);
-  // const [prefazione, setPrefazione] = useState([]);
-  const [indice, setIndice] = useState([]);
+
+function Book() {
+
   const [poems, setPoems] = useState([]);
-
-  // const indice2 = [...indice];
   const book = useRef();
-  const backendUrl = 'http://localhost:9000/';
+  const backendUrl = 'http://localhost:9000';
 
-  const loadAcque = async () => {
-    const response = await fetch(`${backendUrl}acque`);
-    const acque = await response.json();
-    setAcque(acque);
-  };
-  const loadTerre = async () => {
-    const response = await fetch(`${backendUrl}terre`);
-    const terre = await response.json();
-    setTerre(terre);
-  };
-  const loadAmori = async () => {
-    const response = await fetch(`${backendUrl}amori`);
-    const amori = await response.json();
-    setAmori(amori);
-  };
-  // const loadPrefazione = async () => {
-  //   const response = await fetch(`${backendUrl}prefazione`);
-  //   const prefazione = await response.json();
-  //   setPrefazione(prefazione);
-  // };
-  const loadIndice = async () => {
-    const response = await fetch(`${backendUrl}indice`);
-    const indice = await response.json();
-    setIndice(indice);
+  const loadPoems = async () => {
+    const response = await fetch(`${backendUrl}`);
+    const poemsResponse = await response.json();
+    setPoems(poemsResponse);
   };
 
   useEffect(() => {
     (async () => {
-      await loadAcque();
-      await loadTerre();
-      await loadAmori();
-      await loadIndice();
-      setPoems((prev) => [...prev,...acque, ...terre, ...amori]);
+       await loadPoems();
     })();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -59,7 +30,7 @@ function Libro() {
   const onFlip = useCallback((e) => {
     // console.log('Current page: ' + e.data);
   }, []);
-  console.log(indice);
+
   const navBanners = ['home', 'indice', 'prefazione', 'postfazione'];
 
   return (
@@ -69,7 +40,7 @@ function Libro() {
         Next page
       </button>
 
-      <div className='BookOpened'>
+      <div className='Book'>
         <HTMLFlipBook
           ref={book}
           onFlip={onFlip}
@@ -79,7 +50,7 @@ function Libro() {
           height={800}
           className='FlipBook'
         >
-          {indice.map((indice, indiceIndex) => {
+          {/* {indice.map((indice, indiceIndex) => {
             const arrOffIndicesLines = indice.text.split('\n');
             const batchSize = 16;
             const amountBatches = Math.ceil(
@@ -112,10 +83,11 @@ function Libro() {
                 />
               );
             });
-          })}
+          })} */}
           {poems.map((poem, poemIndex) => {
+            console.log(poem.title);
             const arrOfPoemsLines = poem.text.split('\n');
-            const batchSize = 16;
+            const batchSize = poem.title === "PREFAZIONE" ? 3 : 16;
             const amountBatches = Math.ceil(arrOfPoemsLines.length / batchSize);
             const batches = [];
             for (let i = 0; i < amountBatches; i++) {
@@ -135,6 +107,7 @@ function Libro() {
                   title={pageIndex === 0 ? poem.title : '.....'}
                   text={page.map((line, index) => {
                     return (
+
                       <>
                         <p key={index}>{line}</p>
                         <br />
@@ -151,4 +124,4 @@ function Libro() {
   );
 }
 
-export default Libro;
+export default Book;

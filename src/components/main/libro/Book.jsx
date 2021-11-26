@@ -9,9 +9,9 @@ import React, { useCallback } from 'react';
 // https://reactjs.org/docs/forwarding-refs.html
 
 function Book() {
-
   const [poems, setPoems] = useState([]);
   const book = useRef();
+  const indexBook = useRef([]);
   const backendUrl = 'http://localhost:9000';
 
   const loadPoems = async () => {
@@ -22,7 +22,7 @@ function Book() {
 
   useEffect(() => {
     (async () => {
-       await loadPoems();
+      await loadPoems();
     })();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -33,11 +33,21 @@ function Book() {
 
   const navBanners = ['home', 'indice', 'prefazione', 'postfazione'];
 
+  const goToPoem = (poemTitle) => {
+    const current = indexBook.current;
+    const poemFound = current.find((item) => item.poemTitle === poemTitle);
+    poemFound && book.current.pageFlip().flip(poemFound.pageCounter);
+    console.log(poemFound);
+    // console.log({ poemTitle });
+  };
+
+  let pageCounter = 1;
+
   return (
     <>
       <Navbar navBanners={navBanners} />
-      <button onClick={() => book.current.pageFlip().flip(14)}>
-        Next page
+      <button onClick={() => goToPoem("Di Acque")}>
+        indice
       </button>
 
       <div className='Book'>
@@ -50,44 +60,13 @@ function Book() {
           height={800}
           className='FlipBook'
         >
-          {/* {indice.map((indice, indiceIndex) => {
-            const arrOffIndicesLines = indice.text.split('\n');
-            const batchSize = 16;
-            const amountBatches = Math.ceil(
-              arrOffIndicesLines.length / batchSize
-            );
-            const batches = [];
-            for (let i = 0; i < amountBatches; i++) {
-              const batch = arrOffIndicesLines.slice(
-                i * batchSize,
-                i * batchSize + batchSize
-              );
-              batches.push(batch);
-            }
-
-            return batches.map((page, pageIndex) => {
-              return (
-                <Page
-                  idStyle={`indice${1 + indiceIndex}page${pageIndex + 1}`}
-                  key={pageIndex + 10000000}
-                  pageNumber={indice.description}
-                  title={pageIndex === 0 ? indice.title : '.....'}
-                  text={page.map((line, index) => {
-                    return (
-                      <ul>
-                        <li>{line}</li>
-                        <br />
-                      </ul>
-                    );
-                  })}
-                />
-              );
-            });
-          })} */}
           {poems.map((poem, poemIndex) => {
-            console.log(poem.title);
+            console.log({ pageCounter, poem: poem.title });
             const arrOfPoemsLines = poem.text.split('\n');
-            const batchSize = poem.title === "PREFAZIONE" ? 3 : 16;
+            const batchSize =
+              poem.title === 'PREFAZIONE' || poem.title === 'POSTFAZIONE'
+                ? 3
+                : 16;
             const amountBatches = Math.ceil(arrOfPoemsLines.length / batchSize);
             const batches = [];
             for (let i = 0; i < amountBatches; i++) {
@@ -98,6 +77,11 @@ function Book() {
               batches.push(batch);
             }
 
+            indexBook.current.push({
+              poemTitle: poem.title,
+              pageCounter,
+            });
+            pageCounter = pageCounter + amountBatches;
             return batches.map((page, pageIndex) => {
               return (
                 <Page
@@ -107,9 +91,17 @@ function Book() {
                   title={pageIndex === 0 ? poem.title : '.....'}
                   text={page.map((line, index) => {
                     return (
-
                       <>
-                        <p key={index}>{line}</p>
+                        {poem.description === 'INDICE' ? (
+                          <p
+                            onClick={() => goToPoem(line.substring(2))}
+                            key={index}
+                          >
+                            {line}
+                          </p>
+                        ) : (
+                          <p key={index}>{line}</p>
+                        )}
                         <br />
                       </>
                     );

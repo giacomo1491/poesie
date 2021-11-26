@@ -8,7 +8,8 @@ const Page = React.forwardRef((props, ref) => {
     
       <h2 style={{ color: 'red' }}>{props.title}</h2>
       <div>{props.text}</div>
-      <span id={props.id}>{props.pageNumber}</span>
+      <span >{props.pageNumber}</span>
+      <span >{props.absolutePageNumber}</span>
     </div>
   );
 });

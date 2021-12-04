@@ -51,7 +51,7 @@ function Book() {
     <>
       <div className='Navbars'>
         <Navbar navBanners={navBanners} />
-        <ul className='NavbarBook'>
+        <ul className='Navbar'>
           {navBannersBook.map((banner, index) => (
             <li
               key={index}
@@ -108,7 +108,8 @@ function Book() {
                       <>
                         {poem.description === 'INDICE' ? (
                           <p
-                            onClick={() => goToPoem(line.substring(2))}
+                            // onClick={() => goToPoem(line.substring(2))}
+                            onClick={() => goToPoem(line)}
                             key={index}
                           >
                             {line}

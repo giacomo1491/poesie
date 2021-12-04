@@ -4,7 +4,7 @@ import './book.scss';
 import Page from './page/Page';
 import Navbar from '../../navbar/Navbar';
 import React, { useCallback } from 'react';
-// import indice from './indice.json';
+
 // https://www.npmjs.com/package/react-pageflip
 // https://reactjs.org/docs/forwarding-refs.html
 
@@ -24,19 +24,23 @@ function Book() {
     (async () => {
       await loadPoems();
     })();
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const onFlip = useCallback((e) => {
-    // console.log('Current page: ' + e.data);
+    console.log('Current page: ' + e.data);
   }, []);
 
-  const navBanners = ['home', 'indice', 'prefazione', 'postfazione'];
+  const navBanners = ['home'];
+  const navBannersBook = [
+    { title: 'prefazione', page: 1 },
+    { title: 'indice', page: 14 },
+    { title: 'postfazione', page: 189 },
+  ];
 
   const goToPoem = (poemTitle) => {
     const current = indexBook.current;
     const poemFound = current.find((item) => item.poemTitle === poemTitle);
-    poemFound && book.current.pageFlip().flip(poemFound.pageCounter);
+    poemFound && book.current.pageFlip().flip(poemFound.pageCounter + 1);
     console.log(poemFound);
     // console.log({ poemTitle });
   };
@@ -45,10 +49,19 @@ function Book() {
 
   return (
     <>
-      <Navbar navBanners={navBanners} />
-      <button onClick={() => goToPoem("Di Acque")}>
-        indice
-      </button>
+      <div className='Navbars'>
+        <Navbar navBanners={navBanners} />
+        <ul className='NavbarBook'>
+          {navBannersBook.map((banner, index) => (
+            <li
+              key={index}
+              onClick={() => book.current.pageFlip().flip(banner.page)}
+            >
+              <p>{banner.title}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
 
       <div className='Book'>
         <HTMLFlipBook
@@ -82,6 +95,7 @@ function Book() {
               pageCounter,
             });
             pageCounter = pageCounter + amountBatches;
+
             return batches.map((page, pageIndex) => {
               return (
                 <Page

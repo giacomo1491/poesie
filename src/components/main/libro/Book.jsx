@@ -67,7 +67,7 @@ function Book() {
         <HTMLFlipBook
           ref={book}
           onFlip={onFlip}
-          flippingTime={1200}
+          flippingTime={1250}
           // size={"stretch"}
           width={700}
           height={800}
@@ -111,6 +111,7 @@ function Book() {
                             // onClick={() => goToPoem(line.substring(2))}
                             onClick={() => goToPoem(line)}
                             key={index}
+                            style={{ cursor: 'grabbing' }}
                           >
                             {line}
                           </p>

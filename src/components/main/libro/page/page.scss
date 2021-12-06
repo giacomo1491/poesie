@@ -41,3 +41,19 @@
   }
 }
 
+#poem80page1 {
+  background-image: url('../../../../assets/images/copertina4.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  span {
+    opacity: 0;
+  }
+}
+
+#pageDescription {
+  position: absolute;
+  top: 2%;
+  right: 2.5%;
+  font-size: clamp(0.5em, 0.7vw, 1em);;
+}

@@ -32,9 +32,9 @@ function Book() {
 
   const navBanners = ['home'];
   const navBannersBook = [
-    { title: 'prefazione', page: 1 },
-    { title: 'indice', page: 14 },
-    { title: 'postfazione', page: 189 },
+    { title: 'indice', page: 1 },
+    { title: 'prefazione', page: 7 },
+    { title: 'postfazione', page: 187 },
   ];
 
   const goToPoem = (poemTitle) => {
@@ -102,6 +102,7 @@ function Book() {
                   idStyle={`poem${1 + poemIndex}page${pageIndex + 1}`}
                   key={pageIndex}
                   pageNumber={`${1 + poemIndex}.${pageIndex + 1}`}
+                  pageDescription={poem.description}
                   title={pageIndex === 0 ? poem.title : '.....'}
                   text={page.map((line, index) => {
                     return (

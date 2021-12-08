@@ -7,6 +7,7 @@ function App() {
     <Router>
       <div className='App'>
         <Main />
+        ciao
       </div>
     </Router>
   );

@@ -8,6 +8,7 @@ const Page = React.forwardRef((props, ref) => {
       <div>{props.text}</div>
       <p id='pageDescription'>{props.pageDescription}</p>
       <span>{props.pageNumber}</span>
+      <span>{props.pageNumber}</span>
     </div>
   );
 });

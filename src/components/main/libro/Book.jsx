@@ -12,7 +12,8 @@ function Book() {
   const [poems, setPoems] = useState([]);
   const book = useRef();
   const indexBook = useRef([]);
-  const backendUrl = process.env.REACT_APP_BACKEND_URL;
+  // const backendUrl = process.env.REACT_APP_BACKEND_URL;
+  const backendUrl = 'https://alporto.herokuapp.com/';
 
   const loadPoems = async () => {
     const response = await fetch(`${backendUrl}`);

@@ -62,7 +62,7 @@ function Book() {
           ))}
         </ul>
       </div>
-{/* comment */}
+
       <div className='Book'>
         <HTMLFlipBook
           ref={book}

@@ -12,7 +12,7 @@ function Book() {
   const [poems, setPoems] = useState([]);
   const book = useRef();
   const indexBook = useRef([]);
-  const backendUrl = 'http://localhost:9000';
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   const loadPoems = async () => {
     const response = await fetch(`${backendUrl}`);

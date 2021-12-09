@@ -11,9 +11,10 @@ import React, { useCallback } from 'react';
 
 function Book() {
   const [poems, setPoems] = useState([]);
-  const [likesCounter, setLikesCounter] = useState(0);
+  // const [likesCounter, setLikesCounter] = useState(0);
   const book = useRef();
   const indexBook = useRef([]);
+
   // const backendUrl = process.env.REACT_APP_BACKEND_URL;
   const backendUrl = 'http://localhost:9000/';
 
@@ -41,20 +42,25 @@ function Book() {
     { title: 'postfazione', page: 187 },
   ];
 
-  const goToPoem = (poemTitle) => {
+  const goToPoem = (poemTitle, num) => {
     const current = indexBook.current;
     const poemFound = current.find((item) => item.poemTitle === poemTitle);
-    poemFound && book.current.pageFlip().flip(poemFound.pageCounter + 1);
-    console.log(poemFound);
+    poemFound && book.current.pageFlip().flip(poemFound.pageCounter + num);
+    // console.log(poemFound);
     // console.log({ poemTitle });
   };
 
-  // const addLike = () => {
-  //   setLikesCounter(likesCounter + 1);
-  //   // turnToPage
-  // };
+  let pageCounter = 0;
 
-  let pageCounter = 1;
+  const handleAddLike = async (poem) => {
+    await fetch(`${backendUrl}/editpoem/${poem._id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        likes: poem.likes,
+      }),
+    });
+  };
 
   return (
     <>
@@ -110,7 +116,9 @@ function Book() {
                 <Page
                   idStyle={`poem${1 + poemIndex}page${pageIndex + 1}`}
                   key={pageIndex}
-                  pageNumber={`${1 + poemIndex}.${pageIndex + 1}`}
+                  // pageNumber={`${1 + poemIndex}.${pageIndex + 1}`}
+                  pageNumber={pageIndex}
+                  // pageNumber={poemIndex}
                   pageDescription={poem.description}
                   title={pageIndex === 0 ? poem.title : '.....'}
                   likeImg={like}
@@ -128,19 +136,33 @@ function Book() {
                     poem.title !== 'PREFAZIONE' &&
                     poem.title !== 'POSTFAZIONE' &&
                     poem.description !== 'INDICE'
-                      ? likesCounter
+                      ? poem.likes
                       : ''
                   }
                   addLike={() => {
-                    setLikesCounter(likesCounter + 1);
+                    // setLikesCounter(likesCounter + 1);
+                    handleAddLike(poem);
                   }}
                   text={page.map((line, index) => {
                     return (
                       <>
                         {poem.description === 'INDICE' ? (
                           <p
-                            // onClick={() => goToPoem(line.substring(2))}
-                            onClick={() => goToPoem(line)}
+                            onClick={() => {
+                              if (pageIndex === 0 && poemIndex === 0) {
+                                goToPoem(line, 0);
+                              }
+                              if (pageIndex === 1) {
+                                goToPoem(line, -2);
+                              }
+                              if (
+                                (pageIndex === 0 &&
+                                  poem.title === 'Di Terre') ||
+                                (pageIndex === 0 && poem.title === 'Di Amori')
+                              ) {
+                                goToPoem(line, 2);
+                              }
+                            }}
                             key={index}
                             style={{ cursor: 'grabbing' }}
                           >

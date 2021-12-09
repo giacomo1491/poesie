@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import HTMLFlipBook from 'react-pageflip';
 import './book.scss';
+import like from '../../../assets/like.png';
 import Page from './page/Page';
 import Navbar from '../../navbar/Navbar';
 import React, { useCallback } from 'react';
@@ -10,10 +11,11 @@ import React, { useCallback } from 'react';
 
 function Book() {
   const [poems, setPoems] = useState([]);
+  const [likesCounter, setLikesCounter] = useState(0);
   const book = useRef();
   const indexBook = useRef([]);
-  const backendUrl = process.env.REACT_APP_BACKEND_URL;
-  // const backendUrl = 'https://alporto.herokuapp.com/';
+  // const backendUrl = process.env.REACT_APP_BACKEND_URL;
+  const backendUrl = 'http://localhost:9000/';
 
   const loadPoems = async () => {
     const response = await fetch(`${backendUrl}`);
@@ -25,6 +27,7 @@ function Book() {
     (async () => {
       await loadPoems();
     })();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const onFlip = useCallback((e) => {
@@ -45,6 +48,11 @@ function Book() {
     console.log(poemFound);
     // console.log({ poemTitle });
   };
+
+  // const addLike = () => {
+  //   setLikesCounter(likesCounter + 1);
+  //   // turnToPage
+  // };
 
   let pageCounter = 1;
 
@@ -70,8 +78,8 @@ function Book() {
           onFlip={onFlip}
           flippingTime={1250}
           // size={"stretch"}
-          width={700}
-          height={800}
+          width={600}
+          height={680}
           className='FlipBook'
         >
           {poems.map((poem, poemIndex) => {
@@ -105,6 +113,27 @@ function Book() {
                   pageNumber={`${1 + poemIndex}.${pageIndex + 1}`}
                   pageDescription={poem.description}
                   title={pageIndex === 0 ? poem.title : '.....'}
+                  likeImg={like}
+                  likeOpacity={
+                    pageIndex === 0 &&
+                    poem.title !== 'PREFAZIONE' &&
+                    poem.title !== 'POSTFAZIONE' &&
+                    poem.description !== 'INDICE'
+                      ? { display: 'block' }
+                      : { display: 'none' }
+                  }
+                  // likesCounter={pageIndex === 0 ? likesCounter : ''}
+                  likesCounter={
+                    pageIndex === 0 &&
+                    poem.title !== 'PREFAZIONE' &&
+                    poem.title !== 'POSTFAZIONE' &&
+                    poem.description !== 'INDICE'
+                      ? likesCounter
+                      : ''
+                  }
+                  addLike={() => {
+                    setLikesCounter(likesCounter + 1);
+                  }}
                   text={page.map((line, index) => {
                     return (
                       <>

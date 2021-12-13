@@ -1,7 +1,7 @@
 .Page {
   border: 3px solid black;
   background-color: white;
-
+  // background-image: url('https://images.unsplash.com/photo-1575479971017-542ec1ce42eb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80');
   .imgTitleLikeCounteriner {
     display: flex;
 
@@ -19,11 +19,15 @@
       font-weight: bolder;
       // margin-left: -10%;
     }
-    img {
+    button{
+      background-image: url("../../../../assets/like.png");
+      background-size: contain;
+      background-repeat: no-repeat;
       cursor: grabbing;
-      width: clamp(1.3em, 4vw, 2em);
+      width: clamp(2.3em, 4vw, 2em);
+      height: clamp(2.3em, 4vh, 2em);
     }
-    img:hover {
+    button:hover {
       transform: scale(2);
       margin-right: 5%;
     }
@@ -38,6 +42,15 @@
     position: absolute;
     bottom: 2%;
     right: 2.5%;
+  }
+
+  .bookIndexTitle {
+    font-weight: bolder;
+  }
+  .bookIndexTitle:hover {
+    color: brown;
+    transform: scale(1.2);
+    margin-left: 10%;
   }
 }
 
@@ -55,7 +68,18 @@
   }
 }
 
-#poem80page1 {
+// #poem80page1 {
+//   background-image: url('../../../../assets/images/copertina4.jpg');
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   background-position: center;
+
+//   .pageNumber {
+//     opacity: 0;
+//   }
+// }
+
+#poem81page1 {
   background-image: url('../../../../assets/images/copertina4.jpg');
   background-repeat: no-repeat;
   background-size: cover;

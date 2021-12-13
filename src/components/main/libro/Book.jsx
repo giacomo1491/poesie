@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import HTMLFlipBook from 'react-pageflip';
 import './book.scss';
-import like from '../../../assets/like.png';
 import Page from './page/Page';
 import Navbar from '../../navbar/Navbar';
 import React, { useCallback } from 'react';
@@ -16,7 +15,7 @@ function Book() {
   const indexBook = useRef([]);
 
   // const backendUrl = process.env.REACT_APP_BACKEND_URL;
-  const backendUrl = 'http://localhost:9000/';
+  const backendUrl = 'http://localhost:9000';
 
   const loadPoems = async () => {
     const response = await fetch(`${backendUrl}`);
@@ -31,15 +30,20 @@ function Book() {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   const onFlip = useCallback((e) => {
-    console.log('Current page: ' + e.data);
+    // e.stopPropagation();
+    // (async () => {
+    //   await loadPoems();
+    // })();
+    // console.log('Current page: ' + e.data);
   }, []);
 
   const navBanners = ['home'];
   const navBannersBook = [
-    { title: 'indice', page: 1 },
+    { title: 'indice', page: 0 },
     { title: 'prefazione', page: 7 },
-    { title: 'postfazione', page: 187 },
+    { title: 'postfazione', page: 176 },
   ];
 
   const goToPoem = (poemTitle, num) => {
@@ -53,13 +57,15 @@ function Book() {
   let pageCounter = 0;
 
   const handleAddLike = async (poem) => {
-    await fetch(`${backendUrl}/editpoem/${poem._id}`, {
+    // e.stopPropagation();
+    // e.preventDefault();
+    const response = await fetch(`${backendUrl}/addLike/acque/${poem._id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        likes: poem.likes,
-      }),
     });
+    const data = await response.json();
+    poems.find((m) => m._id === poem._id).likes = data.likes;
+    setPoems((prev) => [...prev, ...poems]);
   };
 
   return (
@@ -89,10 +95,11 @@ function Book() {
           className='FlipBook'
         >
           {poems.map((poem, poemIndex) => {
-            console.log({ pageCounter, poem: poem.title });
+            // console.log({ pageCounter, poem: poem.title });
             const arrOfPoemsLines = poem.text.split('\n');
             const batchSize =
-              poem.title === 'PREFAZIONE' || poem.title === 'POSTFAZIONE'
+              poem.description === 'prefazione' ||
+              poem.description === 'postfazione'
                 ? 3
                 : 16;
             const amountBatches = Math.ceil(arrOfPoemsLines.length / batchSize);
@@ -116,38 +123,21 @@ function Book() {
                 <Page
                   idStyle={`poem${1 + poemIndex}page${pageIndex + 1}`}
                   key={pageIndex}
-                  // pageNumber={`${1 + poemIndex}.${pageIndex + 1}`}
-                  pageNumber={pageIndex}
-                  // pageNumber={poemIndex}
+                  pageIndex={pageIndex}
+                  pageNumber={`${1 + poemIndex}.${pageIndex + 1}`}
                   pageDescription={poem.description}
                   title={pageIndex === 0 ? poem.title : '.....'}
-                  likeImg={like}
-                  likeOpacity={
-                    pageIndex === 0 &&
-                    poem.title !== 'PREFAZIONE' &&
-                    poem.title !== 'POSTFAZIONE' &&
-                    poem.description !== 'INDICE'
-                      ? { display: 'block' }
-                      : { display: 'none' }
-                  }
-                  // likesCounter={pageIndex === 0 ? likesCounter : ''}
-                  likesCounter={
-                    pageIndex === 0 &&
-                    poem.title !== 'PREFAZIONE' &&
-                    poem.title !== 'POSTFAZIONE' &&
-                    poem.description !== 'INDICE'
-                      ? poem.likes
-                      : ''
-                  }
-                  addLike={() => {
-                    // setLikesCounter(likesCounter + 1);
+                  poem={poem}
+                  addLike={(e) => {
+                    // e.stopPropagation();
                     handleAddLike(poem);
                   }}
                   text={page.map((line, index) => {
                     return (
                       <>
-                        {poem.description === 'INDICE' ? (
+                        {poem.description === 'indice' ? (
                           <p
+                            className='bookIndexTitle'
                             onClick={() => {
                               if (pageIndex === 0 && poemIndex === 0) {
                                 goToPoem(line, 0);
@@ -166,7 +156,7 @@ function Book() {
                             key={index}
                             style={{ cursor: 'grabbing' }}
                           >
-                            {line}
+                            - {line}
                           </p>
                         ) : (
                           <p key={index}>{line}</p>

@@ -32,10 +32,6 @@ function Book() {
   }, []);
 
   const onFlip = useCallback((e) => {
-    // e.stopPropagation();
-    // (async () => {
-    //   await loadPoems();
-    // })();
     // console.log('Current page: ' + e.data);
   }, []);
 
@@ -56,16 +52,25 @@ function Book() {
 
   let pageCounter = 0;
 
-  const handleAddLike = async (poem) => {
-    // e.stopPropagation();
-    // e.preventDefault();
-    const response = await fetch(`${backendUrl}/addLike/acque/${poem._id}`, {
+  const handleAddLike = async (poem, description) => {
+    await fetch(`${backendUrl}/addLike/${description}/${poem._id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
+      likes: poem.likes,
     });
-    const data = await response.json();
-    poems.find((m) => m._id === poem._id).likes = data.likes;
-    setPoems((prev) => [...prev, ...poems]);
+    (async () => {
+      await loadPoems();
+    })();
+
+    // 2. Solution to see the likes without refresh the page
+
+    // const response = await fetch(`${backendUrl}/addLike/acque/${poem._id}`, {
+    //   method: 'PATCH',
+    //   headers: { 'Content-Type': 'application/json' },
+    // });
+    // const data = await response.json();
+    // poems.find((m) => m._id === poem._id).likes = data.likes
+    //   setPoems((prev) => [...prev, ...poems]);
   };
 
   return (
@@ -130,7 +135,7 @@ function Book() {
                   poem={poem}
                   addLike={(e) => {
                     // e.stopPropagation();
-                    handleAddLike(poem);
+                    handleAddLike(poem, poem.description.slice(3));
                   }}
                   text={page.map((line, index) => {
                     return (

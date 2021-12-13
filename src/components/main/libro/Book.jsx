@@ -39,7 +39,7 @@ function Book() {
   const navBannersBook = [
     { title: 'indice', page: 0 },
     { title: 'prefazione', page: 7 },
-    { title: 'postfazione', page: 176 },
+    { title: 'postfazione', page: 186 },
   ];
 
   const goToPoem = (poemTitle, num) => {
@@ -130,10 +130,15 @@ function Book() {
                   key={pageIndex}
                   pageIndex={pageIndex}
                   pageNumber={`${1 + poemIndex}.${pageIndex + 1}`}
-                  pageDescription={poem.description}
+                  pageDescription={
+                    (poemIndex === 79 && pageIndex === 0) ||
+                    (poemIndex === 80 && pageIndex === 0)
+                      ? ''
+                      : poem.description
+                  }
                   title={pageIndex === 0 ? poem.title : '.....'}
                   poem={poem}
-                  addLike={(e) => {
+                  addLike={() => {
                     // e.stopPropagation();
                     handleAddLike(poem, poem.description.slice(3));
                   }}

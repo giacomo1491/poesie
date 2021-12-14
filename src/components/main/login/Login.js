@@ -1,19 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useTheme } from '../../../ThemeContext';
 import './login.scss';
 import Navbar from '../../navbar/Navbar';
 
 function Login() {
-  const { currentUser, setCurrentUser, loadUsers } = useTheme();
+  const { currentUser, setCurrentUser } = useTheme();
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
 
   const navBanners = ['home', 'libro', 'signup'];
-
-  useEffect(() => {
-    loadUsers();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const currentUserIsInGroup = (accessGroup) => {
     const accessGroupArray = currentUser.accessGroups

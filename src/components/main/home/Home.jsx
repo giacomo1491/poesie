@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import Contatti from './contatti/Contatti';
 import Navbar from '../../navbar/Navbar';
@@ -7,12 +6,7 @@ import { useTheme } from '../../../ThemeContext';
 import './home.scss';
 
 function Home() {
-  const { currentUser, loadUsers } = useTheme();
-
-  useEffect(() => {
-    loadUsers();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { currentUser } = useTheme();
 
   const navBanners = ['libro', 'signup', 'login'];
   console.log(currentUser);

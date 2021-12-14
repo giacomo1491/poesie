@@ -6,7 +6,7 @@ import Eye from '../../../assets/eye.png';
 import Navbar from '../../navbar/Navbar';
 
 function SignUpForm() {
-  const { currentUser, setCurrentUser, loadUsers } = useTheme();
+  const { currentUser, setCurrentUser } = useTheme();
   const [userName, setUserName] = useState('');
   const [password1, setPassword1] = useState('');
   const [password2, setPassword2] = useState('');
@@ -26,11 +26,6 @@ function SignUpForm() {
       setPayload((prev) => ({}));
     }
   };
-
-  useEffect(() => {
-    loadUsers();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useEffect(() => {
     clearPayload();

@@ -4,28 +4,14 @@ import './login.scss';
 import Navbar from '../../navbar/Navbar';
 
 function Login() {
-  const { currentUser, setCurrentUser } = useTheme();
+  const { currentUser, setCurrentUser, loadUsers } = useTheme();
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
 
   const navBanners = ['home', 'libro', 'signup'];
 
   useEffect(() => {
-    (async () => {
-      const requestOptions = {
-        method: 'GET',
-        credentials: 'include',
-      };
-      const response = await fetch(
-        'http://localhost:9000/login/currentuser',
-        requestOptions
-      );
-      if (response.ok) {
-        const data = await response.json();
-        setCurrentUser((prev) => ({ ...prev, ...data.user }));
-      }
-      // loadNotYetApprovedUsers();
-    })();
+    loadUsers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -100,7 +86,6 @@ function Login() {
                     value={userName}
                     onChange={handleuserName}
                     autoComplete='userName'
-
                   />
                 </div>
                 <div className='row'>
@@ -119,26 +104,32 @@ function Login() {
               </fieldset>
             </form>
           )}
-
+          <br />
+          <br />
+          <br />
           {currentUserIsInGroup('loggedInUsers') && (
             <div>
               <button onClick={handleLogoutButton}>Logout</button>
             </div>
           )}
           {currentUserIsInGroup('loggedOutUsers') && (
-            <div className='panel'>Welcome to this site.</div>
+            <div className='panel'>
+              <h3>
+                Grazie alla sua registrazione potrà votare le poesie, e disporre
+                di un segnalibro che la aiuterà a ritrovare la pagina in cui ha
+                smesso di leggere l'ultima volta
+              </h3>
+            </div>
           )}
 
           {currentUserIsInGroup('members') && (
             <>
               <div className='panel'>
-                <h3>Current Site News for Members</h3>
-                <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Neque explicabo voluptate quia asperiores sit! Vel molestiae
-                  labore ratione non dolores? Exercitationem soluta quo id
-                  laboriosam, autem perferendis? Fuga, suscipit ipsa.
-                </p>
+                <h3>
+                  Grazie alla sua registrazione potrà votare le poesie, e
+                  disporre di un segnalibro che la aiuterà a ritrovare la pagina
+                  in cui ha smesso di leggere l'ultima volta
+                </h3>
               </div>
             </>
           )}

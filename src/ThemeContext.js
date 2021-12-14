@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 
 const ThemeContext = React.createContext();
 
@@ -9,26 +9,23 @@ export function useTheme() {
 export function ThemeProvider({ children }) {
   const [currentUser, setCurrentUser] = useState({});
 
-  useEffect(() => {
-    (async () => {
-      const requestOptions = {
-        method: 'GET',
-        credentials: 'include',
-      };
-      const response = await fetch(
-        'http://localhost:9000/login/currentuser',
-        requestOptions
-      );
-      if (response.ok) {
-        const _currentUser = await response.json();
-        setCurrentUser((prev) => ({ ...prev, ..._currentUser }));
-      }
-    })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const loadUsers = async () => {
+    const requestOptions = {
+      method: 'GET',
+      credentials: 'include',
+    };
+    const response = await fetch(
+      'http://localhost:9000/login/currentuser',
+      requestOptions
+    );
+    if (response.ok) {
+      const data = await response.json();
+      setCurrentUser((prev) => ({ ...prev, ...data.user }));
+    }
+  };
 
   return (
-    <ThemeContext.Provider value={{ currentUser, setCurrentUser }}>
+    <ThemeContext.Provider value={{ currentUser, setCurrentUser, loadUsers }}>
       {children}
     </ThemeContext.Provider>
   );

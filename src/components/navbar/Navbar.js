@@ -5,12 +5,14 @@ function Navbar(props) {
   return (
     <ul className='Navbar'>
       {props.navBanners.map((banner, index) => (
+        
         <li key={index}>
           <NavLink
             to={banner === 'home' ? '' : banner}
+            exact={banner === 'home' ? true : false}
             activeClassName='selected'
           >
-            <p>{banner}</p>
+            <p>{banner.toUpperCase()}</p>
           </NavLink>
         </li>
       ))}

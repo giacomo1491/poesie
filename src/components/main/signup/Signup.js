@@ -17,7 +17,7 @@ function SignUpForm() {
   const [password2IsValid, setPassword2IsValid] = useState(false);
   const [formIsValid, setFormIsValid] = useState(false);
 
-  const navBanners = ['libro', 'home', 'login'];
+  const navBanners = ['home', 'libro', 'login'];
 
   console.log(currentUser);
 

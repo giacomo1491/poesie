@@ -1,12 +1,17 @@
-import { useState } from 'react';
 import { useTheme } from '../../../ThemeContext';
 import './login.scss';
 import Navbar from '../../navbar/Navbar';
 
 function Login() {
-  const { currentUser, setCurrentUser } = useTheme();
-  const [userName, setUserName] = useState('');
-  const [password, setPassword] = useState('');
+  const {
+    currentUser,
+    setCurrentUser,
+    userName,
+    setUserName,
+    password,
+    setPassword,
+    handleLogoutButton,
+  } = useTheme();
 
   const navBanners = ['home', 'libro', 'signup'];
 
@@ -42,24 +47,6 @@ function Login() {
     setPassword('');
   };
 
-  const handleLogoutButton = async (e) => {
-    const requestOptions = {
-      method: 'GET',
-      credentials: 'include',
-    };
-    const response = await fetch(
-      'http://localhost:9000/login/logout',
-      requestOptions
-    );
-    if (response.ok) {
-      setUserName('');
-      setPassword('');
-      const _currentUser = await response.json();
-      console.log(_currentUser);
-      setCurrentUser((prev) => ({ ...prev, ..._currentUser }));
-    }
-  };
-  console.log(`login:${currentUser.userName}`);
   return (
     <div className='Login'>
       <Navbar navBanners={navBanners} />

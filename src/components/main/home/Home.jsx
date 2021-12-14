@@ -6,9 +6,18 @@ import { useTheme } from '../../../ThemeContext';
 import './home.scss';
 
 function Home() {
-  const { currentUser } = useTheme();
+  const { currentUser, handleLogoutButton } = useTheme();
 
-  const navBanners = ['libro', 'signup', 'login'];
+  const navBanners = [
+    'libro',
+    'signup',
+    currentUser.userName === 'undefined' ||
+    currentUser.userName === 'anonymousUser' ? (
+      'login'
+    ) : (
+      <button onClick={handleLogoutButton}>Logout</button>
+    ),
+  ];
   console.log(currentUser);
   // console.log(currentUser.currentUser);
   return (

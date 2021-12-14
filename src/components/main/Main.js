@@ -1,10 +1,10 @@
 import './main.scss';
-import React,{useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Book from './libro/Book';
 import Home from './home/Home';
-import Signup from './signup/Signup'
-import Login from './login/Login'
+import Signup from './signup/Signup';
+import Login from './login/Login';
 import { useTheme } from '../../ThemeContext';
 
 // https://www.npmjs.com/package/react-pageflip
@@ -18,7 +18,7 @@ function Main() {
   return (
     <div className='Main'>
       <Switch>
-      <Route exact path='/signup'>
+        <Route exact path='/signup'>
           <Signup />
         </Route>
         <Route exact path='/login'>

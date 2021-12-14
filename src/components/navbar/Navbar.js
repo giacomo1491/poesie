@@ -12,7 +12,7 @@ function Navbar(props) {
             exact={banner === 'home' ? true : false}
             activeClassName='selected'
           >
-            <p>{banner.toUpperCase()}</p>
+            <p>{banner}</p>
           </NavLink>
         </li>
       ))}

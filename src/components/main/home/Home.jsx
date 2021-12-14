@@ -2,16 +2,26 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Contatti from './contatti/Contatti';
 import Navbar from '../../navbar/Navbar';
+import { useTheme } from '../../../ThemeContext';
+
 import './home.scss';
 
 function Home() {
-  const navBanners = ['libro'];
+  const { currentUser } = useTheme();
 
+  const navBanners = ['libro', 'signup', 'login'];
+  console.log(currentUser);
+  // console.log(currentUser.currentUser);
   return (
     <div className='Home'>
       <Navbar navBanners={navBanners} />
       <Contatti />
       <NavLink to='/libro'>
+        {currentUser.userName !== 'anonymousUser' && (
+          <>
+            <h2>Welcome {currentUser.userName}</h2>
+          </>
+        )}
         <div className='book'>
           <div className='front'>
             <div className='cover'>

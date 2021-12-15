@@ -1,7 +1,7 @@
 import { useTheme } from '../../../ThemeContext';
 import { useState } from 'react';
 import './login.scss';
-import Eye from '../../../assets/eye.png';
+import { ImEyeBlocked, ImEye } from 'react-icons/im';
 
 function Login() {
   const {
@@ -14,7 +14,6 @@ function Login() {
     handleLogoutButton,
   } = useTheme();
   const [passwordsInputType, setPasswordsInputType] = useState('password');
-
 
   const currentUserIsInGroup = (accessGroup) => {
     const accessGroupArray = currentUser.accessGroups
@@ -85,7 +84,16 @@ function Login() {
                     value={password}
                     autoComplete='current-password'
                   />
-                  <img onClick={handleShowPasswordButton} src={Eye} alt='eye' />
+                  <span
+                    className='eyes-icon'
+                    onClick={handleShowPasswordButton}
+                  >
+                    {passwordsInputType === 'password' ? (
+                      <ImEye />
+                    ) : (
+                      <ImEyeBlocked />
+                    )}
+                  </span>
                 </div>
                 <div className='buttonRow'>
                   <button onClick={handleLoginButton}>Login</button>

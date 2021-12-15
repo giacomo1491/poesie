@@ -2,7 +2,7 @@
 import './signup.scss';
 import { useEffect, useState } from 'react';
 import { useTheme } from '../../../ThemeContext';
-import Eye from '../../../assets/eye.png';
+import { ImEyeBlocked, ImEye } from 'react-icons/im';
 
 function SignUpForm() {
   const { currentUser, setCurrentUser } = useTheme();
@@ -145,7 +145,9 @@ function SignUpForm() {
               autoComplete='new-password'
               onChange={handlePassword1}
             />
-            <img onClick={handleShowPasswordButton} src={Eye} alt='' />
+            <span className='eyes-icon' onClick={handleShowPasswordButton}>
+              {passwordsInputType === 'password' ? <ImEye /> : <ImEyeBlocked />}
+            </span>
           </div>
 
           <div className={`note ${password1IsValid ? 'valid' : 'invalid'}`}>
@@ -169,7 +171,9 @@ function SignUpForm() {
               autoComplete='new-password'
               onChange={handlePassword2}
             />
-            <img onClick={handleShowPasswordButton} src={Eye} alt='eye' />
+            <span className='eyes-icon' onClick={handleShowPasswordButton}>
+              {passwordsInputType === 'password' ? <ImEye /> : <ImEyeBlocked />}
+            </span>
           </div>
           <div className={`note ${password2IsValid ? 'valid' : 'invalid'}`}>
             <p>repeat your password</p>

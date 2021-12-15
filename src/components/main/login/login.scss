@@ -20,6 +20,12 @@ form {
             width: 300px;
           }
         }
+        .eyes-icon {
+          margin: 0 0 0 -1.3rem; // => put eyes into input field
+          display: flex;
+          align-items: center;
+          color: #000;
+        }
       }
       .invalid input {
         color: red;

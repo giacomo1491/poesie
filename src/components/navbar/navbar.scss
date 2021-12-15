@@ -8,15 +8,18 @@
   list-style-type: none;
   li {
     margin: 0 2%;
-    p {
+    .navLink {
       color: rgb(58, 13, 13);
+    }
+    p {
+      // color: rgb(58, 13, 13);
       font-size: clamp(1.5em, 2vw, 2.5em);
       font-weight: bold;
       font-style: italic;
       cursor: grabbing;
     }
-    .selected {
-      color: red;
+    .active {
+      color: red !important;
       font-weight: bolder;
     }
   }

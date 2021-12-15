@@ -8,24 +8,24 @@ function Navbar() {
   return (
     <ul className='Navbar'>
       <li>
-        <NavLink to='/'>
+        <NavLink className='navLink' to='/'>
           <p>HOME</p>
         </NavLink>
       </li>
       <li>
-        <NavLink to='/book'>
+        <NavLink className='navLink' to='/book'>
           <p>LIBRO</p>
         </NavLink>
       </li>
       <li>
-        <NavLink to='/signup'>
+        <NavLink className='navLink' to='/signup'>
           <p>SIGNUP</p>
         </NavLink>
       </li>
       {currentUser.accessGroups === 'loggedOutUsers' ||
       currentUser.accessGroups === 'undefined' ? (
         <li>
-          <NavLink to='/login'>
+          <NavLink className='navLink' to='/login'>
             <p>LOGIN</p>
           </NavLink>
         </li>

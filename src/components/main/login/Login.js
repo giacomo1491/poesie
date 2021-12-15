@@ -1,6 +1,8 @@
 import { useTheme } from '../../../ThemeContext';
+import { useState } from 'react';
 import './login.scss';
 import Navbar from '../../navbar/Navbar';
+import Eye from '../../../assets/eye.png';
 
 function Login() {
   const {
@@ -12,7 +14,7 @@ function Login() {
     setPassword,
     handleLogoutButton,
   } = useTheme();
-
+  const [passwordsInputType, setPasswordsInputType] = useState('password');
   const navBanners = ['home', 'libro', 'signup'];
 
   const currentUserIsInGroup = (accessGroup) => {
@@ -47,6 +49,12 @@ function Login() {
     setPassword('');
   };
 
+  const handleShowPasswordButton = () => {
+    setPasswordsInputType(
+      passwordsInputType === 'password' ? 'text' : 'password'
+    );
+  };
+
   return (
     <div className='Login'>
       <Navbar navBanners={navBanners} />
@@ -73,12 +81,13 @@ function Login() {
                 <div className='row'>
                   <label htmlFor='password'>Password</label>
                   <input
-                    type='password'
+                    type={passwordsInputType}
                     id='password'
                     onChange={handlePassword}
                     value={password}
                     autoComplete='current-password'
                   />
+                  <img onClick={handleShowPasswordButton} src={Eye} alt='eye' />
                 </div>
                 <div className='buttonRow'>
                   <button onClick={handleLoginButton}>Login</button>

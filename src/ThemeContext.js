@@ -10,6 +10,7 @@ export function ThemeProvider({ children }) {
   const [currentUser, setCurrentUser] = useState({});
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
+  const [navActive, setNavActive] = useState([false, false, false, false]);
 
   const loadUsers = async () => {
     const requestOptions = {
@@ -43,7 +44,6 @@ export function ThemeProvider({ children }) {
     }
   };
 
-
   return (
     <ThemeContext.Provider
       value={{
@@ -55,6 +55,8 @@ export function ThemeProvider({ children }) {
         password,
         setPassword,
         handleLogoutButton,
+        navActive,
+        setNavActive,
       }}
     >
       {children}

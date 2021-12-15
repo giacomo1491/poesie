@@ -4,13 +4,14 @@ import './book.scss';
 import Page from './page/Page';
 import Navbar from '../../navbar/Navbar';
 import React, { useCallback } from 'react';
+import FadeIn from 'react-fade-in';
+import { FaSpinner } from 'react-icons/fa';
 
 // https://www.npmjs.com/package/react-pageflip
 // https://reactjs.org/docs/forwarding-refs.html
 
 function Book() {
   const [poems, setPoems] = useState([]);
-  // const [likesCounter, setLikesCounter] = useState(0);
   const book = useRef();
   const indexBook = useRef([]);
 
@@ -90,6 +91,14 @@ function Book() {
       </div>
 
       <div className='Book'>
+        {poems.length < 1 && (
+          <FadeIn transitionDuration='800'>
+            <div>
+              <FaSpinner className='spinner' />
+              <span className='loading'> Loading...</span>
+            </div>
+          </FadeIn>
+        )}
         <HTMLFlipBook
           ref={book}
           onFlip={onFlip}

@@ -1,15 +1,13 @@
 .Book {
-
   width: 100%;
   height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
-  .FlipBook{
-    border-radius: 2px 4px 4px 2px;
 
+  .FlipBook {
+    border-radius: 2px 4px 4px 2px;
     // background: linear-gradient(45deg, #dad5dc 0%, #f2ebf4 100%);
     font-family: acumin-pro, sans-serif;
     -webkit-box-shadow: 13px 13px 8px 0px rgba(151, 146, 153, 0.6);
@@ -20,8 +18,16 @@
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
     transform-style: preserve-3d;
-    -webkit-transition: -webkit-transform 0.5s;
-    -moz-transition: -moz-transform 0.5s;
+    transition: -webkit-transform 0.5s;
+    transition: -moz-transform 0.5s;
+  }
+  .loading,
+  .spinner {
+    position: relative;
+    left: 30%;
+    top: 10%;
+    font-weight: bold;
+    font-size: clamp(1.5em, 3vw, 3em);
   }
 }
 .Navbars {

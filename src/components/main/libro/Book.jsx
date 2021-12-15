@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react';
 import HTMLFlipBook from 'react-pageflip';
 import './book.scss';
 import Page from './page/Page';
-import Navbar from '../../navbar/Navbar';
 import React, { useCallback } from 'react';
 import FadeIn from 'react-fade-in';
 import { FaSpinner } from 'react-icons/fa';
@@ -36,7 +35,6 @@ function Book() {
     // console.log('Current page: ' + e.data);
   }, []);
 
-  const navBanners = ['home'];
   const navBannersBook = [
     { title: 'indice', page: 0 },
     { title: 'prefazione', page: 7 },
@@ -77,7 +75,6 @@ function Book() {
   return (
     <>
       <div className='Navbars'>
-        <Navbar navBanners={navBanners} />
         <ul className='Navbar'>
           {navBannersBook.map((banner, index) => (
             <li

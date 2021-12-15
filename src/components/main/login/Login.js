@@ -1,7 +1,6 @@
 import { useTheme } from '../../../ThemeContext';
 import { useState } from 'react';
 import './login.scss';
-import Navbar from '../../navbar/Navbar';
 import Eye from '../../../assets/eye.png';
 
 function Login() {
@@ -15,7 +14,7 @@ function Login() {
     handleLogoutButton,
   } = useTheme();
   const [passwordsInputType, setPasswordsInputType] = useState('password');
-  const navBanners = ['home', 'libro', 'signup'];
+
 
   const currentUserIsInGroup = (accessGroup) => {
     const accessGroupArray = currentUser.accessGroups
@@ -57,7 +56,6 @@ function Login() {
 
   return (
     <div className='Login'>
-      <Navbar navBanners={navBanners} />
       {currentUser.userName && (
         <>
           {currentUser.userName !== 'anonymousUser' && (
@@ -111,18 +109,6 @@ function Login() {
                 smesso di leggere l'ultima volta
               </h3>
             </div>
-          )}
-
-          {currentUserIsInGroup('members') && (
-            <>
-              <div className='panel'>
-                <h3>
-                  Grazie alla sua registrazione potrà votare le poesie, e
-                  disporre di un segnalibro che la aiuterà a ritrovare la pagina
-                  in cui ha smesso di leggere l'ultima volta
-                </h3>
-              </div>
-            </>
           )}
         </>
       )}

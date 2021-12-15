@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react';
 
-
 const ThemeContext = React.createContext();
 
 export function useTheme() {
@@ -43,6 +42,7 @@ export function ThemeProvider({ children }) {
       setCurrentUser((prev) => ({ ...prev, ..._currentUser }));
     }
   };
+
 
   return (
     <ThemeContext.Provider

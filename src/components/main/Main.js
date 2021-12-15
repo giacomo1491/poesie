@@ -1,6 +1,6 @@
 import './main.scss';
 import React, { useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Book from './libro/Book';
 import Home from './home/Home';
 import Signup from './signup/Signup';
@@ -17,20 +17,12 @@ function Main() {
   }, []);
   return (
     <div className='Main'>
-      <Switch>
-        <Route exact path='/signup'>
-          <Signup />
-        </Route>
-        <Route exact path='/login'>
-          <Login />
-        </Route>
-        <Route exact path='/libro'>
-          <Book />
-        </Route>
-        <Route exact path='/'>
-          <Home />
-        </Route>
-      </Switch>
+      <Routes>
+        <Route path='/book' element={<Book />}></Route>
+        <Route path='/signup' element={<Signup />}></Route>
+        <Route path='/login' element={<Login />}></Route>
+        <Route exact path='/' element={<Home />}></Route>
+      </Routes>
     </div>
   );
 }

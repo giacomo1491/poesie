@@ -3,7 +3,6 @@ import './signup.scss';
 import { useEffect, useState } from 'react';
 import { useTheme } from '../../../ThemeContext';
 import Eye from '../../../assets/eye.png';
-import Navbar from '../../navbar/Navbar';
 
 function SignUpForm() {
   const { currentUser, setCurrentUser } = useTheme();
@@ -16,8 +15,6 @@ function SignUpForm() {
   const [password1IsValid, setPassword1IsValid] = useState(false);
   const [password2IsValid, setPassword2IsValid] = useState(false);
   const [formIsValid, setFormIsValid] = useState(false);
-
-  const navBanners = ['home', 'libro', 'login'];
 
   console.log(currentUser);
 
@@ -113,8 +110,6 @@ function SignUpForm() {
 
   return (
     <div className='Signup'>
-      <Navbar navBanners={navBanners} />
-
       <form>
         <fieldset>
           <legend>Sign up</legend>

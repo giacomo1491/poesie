@@ -1,28 +1,14 @@
 import { NavLink } from 'react-router-dom';
 import Contatti from './contatti/Contatti';
-import Navbar from '../../navbar/Navbar';
 import { useTheme } from '../../../ThemeContext';
 
 import './home.scss';
 
 function Home() {
-  const { currentUser, handleLogoutButton } = useTheme();
+  const { currentUser } = useTheme();
 
-  const navBanners = [
-    'libro',
-    'signup',
-    currentUser.userName === 'undefined' ||
-    currentUser.userName === 'anonymousUser' ? (
-      'login'
-    ) : (
-      <button onClick={handleLogoutButton}>Logout</button>
-    ),
-  ];
-  console.log(currentUser);
-  // console.log(currentUser.currentUser);
   return (
     <div className='Home'>
-      <Navbar navBanners={navBanners} />
       <Contatti />
       <NavLink to='/libro'>
         {currentUser.userName !== 'anonymousUser' && (

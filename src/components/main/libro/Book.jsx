@@ -14,10 +14,9 @@ function Book() {
   const [poems, setPoems] = useState([]);
   const book = useRef();
   const indexBook = useRef([]);
-  const { currentUser, setNavActive } = useTheme();
+  const { currentUser, setNavActive,backendUrl } = useTheme();
 
-  // const backendUrl = process.env.REACT_APP_BACKEND_URL;
-  const backendUrl = 'http://localhost:9000';
+
 
   useEffect(() => {
     setNavActive([false, true, true, true]);
@@ -59,8 +58,6 @@ function Book() {
   let pageCounter = 0;
 
   const handleAddLike = async (poem, description) => {
-    console.log(poem.likes);
-    console.log(typeof likes);
     await fetch(`${backendUrl}/addLike/${description}/${poem._id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
@@ -152,6 +149,7 @@ function Book() {
                   }
                   title={pageIndex === 0 ? poem.title : '.....'}
                   poem={poem}
+                  alert={poem.alert}
                   addLike={() => {
                     if (currentUser.userName === 'anonymousUser') {
                       alert('to like the poems you must be registered');

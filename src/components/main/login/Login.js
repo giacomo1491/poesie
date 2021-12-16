@@ -11,8 +11,8 @@ function Login() {
     setUserName,
     password,
     setPassword,
-    handleLogoutButton,
-    setNavActive
+    setNavActive,
+    backendUrl,
   } = useTheme();
   const [passwordsInputType, setPasswordsInputType] = useState('password');
 
@@ -46,7 +46,7 @@ function Login() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userName, password }),
     };
-    const response = await fetch('http://localhost:9000/login', requestOptions);
+    const response = await fetch(`${backendUrl}/login`, requestOptions);
     const _currentUser = await response.json();
     setCurrentUser((prev) => ({ ...prev, ..._currentUser }));
     setUserName('');
@@ -110,11 +110,7 @@ function Login() {
           <br />
           <br />
           <br />
-          {currentUserIsInGroup('loggedInUsers') && (
-            <div>
-              <button onClick={handleLogoutButton}>Logout</button>
-            </div>
-          )}
+
           {currentUserIsInGroup('loggedOutUsers') && (
             <div className='panel'>
               <h3>

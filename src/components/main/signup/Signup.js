@@ -6,7 +6,7 @@ import { useTheme } from '../../../ThemeContext';
 import { ImEyeBlocked, ImEye } from 'react-icons/im';
 
 function SignUpForm() {
-  const { setCurrentUser,setNavActive } = useTheme();
+  const { setCurrentUser, setNavActive, backendUrl } = useTheme();
   const [userName, setUserName] = useState('');
   const [password1, setPassword1] = useState('');
   const [password2, setPassword2] = useState('');
@@ -21,7 +21,6 @@ function SignUpForm() {
     setNavActive([false, false, true, false]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
 
   const clearPayload = () => {
     if (Object.keys(payload).length !== 0) {
@@ -98,7 +97,7 @@ function SignUpForm() {
     };
     (async () => {
       const response = await fetch(
-        `http://localhost:9000/signup/create`,
+        `${backendUrl}/signup/create`,
         requestOptions
       );
       const data = await response.json();
@@ -115,7 +114,7 @@ function SignUpForm() {
 
   return (
     <div className='Signup'>
-     {/* <SignupForm signupProps={SignupForm}/> */}
+      {/* <SignupForm signupProps={SignupForm}/> */}
       <form>
         <fieldset>
           <legend>Sign up</legend>

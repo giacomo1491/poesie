@@ -11,6 +11,7 @@ export function ThemeProvider({ children }) {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [navActive, setNavActive] = useState([false, false, false, false]);
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   const loadUsers = async () => {
     const requestOptions = {
@@ -18,7 +19,7 @@ export function ThemeProvider({ children }) {
       credentials: 'include',
     };
     const response = await fetch(
-      'http://localhost:9000/login/currentuser',
+      `${backendUrl}/login/currentuser`,
       requestOptions
     );
     if (response.ok) {
@@ -32,10 +33,7 @@ export function ThemeProvider({ children }) {
       method: 'GET',
       credentials: 'include',
     };
-    const response = await fetch(
-      'http://localhost:9000/login/logout',
-      requestOptions
-    );
+    const response = await fetch(`${backendUrl}/login/logout`, requestOptions);
     if (response.ok) {
       setUserName('');
       setPassword('');
@@ -57,6 +55,7 @@ export function ThemeProvider({ children }) {
         handleLogoutButton,
         navActive,
         setNavActive,
+        backendUrl,
       }}
     >
       {children}

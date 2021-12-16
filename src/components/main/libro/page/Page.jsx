@@ -19,6 +19,7 @@ const Page = React.forwardRef((props, ref) => {
                 style={props.likeOpacity}
               ></button>
               <span className='likesCounter'>{props.poem.likes.length}</span>
+              <span className='alert'>{props.alert}</span>
             </>
           )}
       </div>

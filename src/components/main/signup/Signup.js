@@ -2,6 +2,7 @@
 import './signup.scss';
 import { useEffect, useState } from 'react';
 import { useTheme } from '../../../ThemeContext';
+// import SignupForm from "./signupForm/SignupForm";
 import { ImEyeBlocked, ImEye } from 'react-icons/im';
 
 function SignUpForm() {
@@ -114,6 +115,7 @@ function SignUpForm() {
 
   return (
     <div className='Signup'>
+     {/* <SignupForm signupProps={SignupForm}/> */}
       <form>
         <fieldset>
           <legend>Sign up</legend>

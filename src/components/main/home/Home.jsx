@@ -15,7 +15,7 @@ function Home() {
   return (
     <div className='Home'>
       <Contatti />
-      <NavLink to='/libro'>
+      <NavLink to='/book'>
         {currentUser.userName !== 'anonymousUser' && (
           <>
             <h2>Welcome {currentUser.userName}</h2>

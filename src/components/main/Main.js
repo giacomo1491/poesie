@@ -9,7 +9,7 @@ import { useTheme } from '../../ThemeContext';
 
 // https://www.npmjs.com/package/react-pageflip
 
-function Main() {
+const Main = () => {
   const { loadUsers } = useTheme();
   useEffect(() => {
     loadUsers();
@@ -25,6 +25,6 @@ function Main() {
       </Routes>
     </div>
   );
-}
+};
 
 export default Main;

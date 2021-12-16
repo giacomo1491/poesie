@@ -1,12 +1,17 @@
 import { NavLink } from 'react-router-dom';
 import Contatti from './contatti/Contatti';
 import { useTheme } from '../../../ThemeContext';
+import { useEffect } from 'react';
 
 import './home.scss';
 
 function Home() {
-  const { currentUser } = useTheme();
+  const { currentUser, setNavActive } = useTheme();
 
+  useEffect(() => {
+    setNavActive([true, false, false, false]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div className='Home'>
       <Contatti />

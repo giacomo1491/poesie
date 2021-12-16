@@ -1,5 +1,5 @@
 import { useTheme } from '../../../ThemeContext';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './login.scss';
 import { ImEyeBlocked, ImEye } from 'react-icons/im';
 
@@ -12,8 +12,14 @@ function Login() {
     password,
     setPassword,
     handleLogoutButton,
+    setNavActive
   } = useTheme();
   const [passwordsInputType, setPasswordsInputType] = useState('password');
+
+  useEffect(() => {
+    setNavActive([false, false, false, true]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const currentUserIsInGroup = (accessGroup) => {
     const accessGroupArray = currentUser.accessGroups

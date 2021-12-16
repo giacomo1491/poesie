@@ -5,6 +5,7 @@ import Page from './page/Page';
 import React, { useCallback } from 'react';
 import FadeIn from 'react-fade-in';
 import { FaSpinner } from 'react-icons/fa';
+import { useTheme } from '../../../ThemeContext';
 
 // https://www.npmjs.com/package/react-pageflip
 // https://reactjs.org/docs/forwarding-refs.html
@@ -13,9 +14,15 @@ function Book() {
   const [poems, setPoems] = useState([]);
   const book = useRef();
   const indexBook = useRef([]);
+  const { setNavActive } = useTheme();
 
   // const backendUrl = process.env.REACT_APP_BACKEND_URL;
   const backendUrl = 'http://localhost:9000';
+
+  useEffect(() => {
+    setNavActive([false, true, true, true]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
 
   const loadPoems = async () => {
     const response = await fetch(`${backendUrl}`);
@@ -74,18 +81,16 @@ function Book() {
 
   return (
     <>
-      <div className='Navbars'>
-        <ul className='Navbar'>
-          {navBannersBook.map((banner, index) => (
-            <li
-              key={index}
-              onClick={() => book.current.pageFlip().flip(banner.page)}
-            >
-              <p>{banner.title}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <ul className='Navbar'>
+        {navBannersBook.map((banner, index) => (
+          <li
+            key={index}
+            onClick={() => book.current.pageFlip().flip(banner.page)}
+          >
+            <p>{banner.title}</p>
+          </li>
+        ))}
+      </ul>
 
       <div className='Book'>
         {poems.length < 1 && (

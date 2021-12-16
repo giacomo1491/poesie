@@ -3,38 +3,36 @@ import { NavLink } from 'react-router-dom';
 import { useTheme } from '../../ThemeContext';
 
 function Navbar() {
-  const { currentUser, handleLogoutButton, navActive, setNavActive } =
+  const { currentUser, handleLogoutButton, navActive} =
     useTheme();
 
   return (
     <ul className='Navbar'>
       {!navActive[0] && (
-        <li onClick={() => setNavActive([true, false, false, false])}>
+        <li>
           <NavLink className='navLink' to='/'>
             <p>HOME</p>
           </NavLink>
         </li>
       )}
       {!navActive[1] && (
-        <li onClick={() => setNavActive([false, true, false, false])}>
+        <li>
           <NavLink className='navLink' to='/book'>
             <p>LIBRO</p>
           </NavLink>
         </li>
       )}
-
       {!navActive[2] && (
-        <li onClick={() => setNavActive([false, false, true, false])}>
+        <li>
           <NavLink className='navLink' to='/signup'>
             <p>SIGNUP</p>
           </NavLink>
         </li>
       )}
-
       {currentUser.accessGroups === 'loggedOutUsers' ||
       currentUser.accessGroups === 'undefined' ? (
         !navActive[3] && (
-          <li onClick={() => setNavActive([false, false, true, true])}>
+          <li>
             <NavLink className='navLink' to='/login'>
               <p>LOGIN</p>
             </NavLink>

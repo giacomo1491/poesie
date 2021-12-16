@@ -5,7 +5,7 @@ import { useTheme } from '../../../ThemeContext';
 import { ImEyeBlocked, ImEye } from 'react-icons/im';
 
 function SignUpForm() {
-  const { currentUser, setCurrentUser } = useTheme();
+  const { setCurrentUser,setNavActive } = useTheme();
   const [userName, setUserName] = useState('');
   const [password1, setPassword1] = useState('');
   const [password2, setPassword2] = useState('');
@@ -16,7 +16,11 @@ function SignUpForm() {
   const [password2IsValid, setPassword2IsValid] = useState(false);
   const [formIsValid, setFormIsValid] = useState(false);
 
-  console.log(currentUser);
+  useEffect(() => {
+    setNavActive([false, false, true, false]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
 
   const clearPayload = () => {
     if (Object.keys(payload).length !== 0) {

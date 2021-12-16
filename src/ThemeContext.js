@@ -11,7 +11,9 @@ export function ThemeProvider({ children }) {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [navActive, setNavActive] = useState([false, false, false, false]);
-  const backendUrl = process.env.REACT_APP_BACKEND_URL;
+  // const backendUrl = process.env.REACT_APP_BACKEND_URL;
+  const backendUrl = 'http://localhost:9000';
+  console.log(backendUrl);
 
   const loadUsers = async () => {
     const requestOptions = {

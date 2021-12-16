@@ -155,6 +155,7 @@ function Book() {
                   addLike={() => {
                     if (currentUser.userName === 'anonymousUser') {
                       alert('to like the poems you must be registered');
+                      setNavActive([false, true, false, false]);
                     }
                     if (
                       poem.likes.find(

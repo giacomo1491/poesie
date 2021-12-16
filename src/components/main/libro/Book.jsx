@@ -81,7 +81,7 @@ function Book() {
 
   return (
     <>
-      <ul className='Navbar'>
+      <ul className='bookNavbar'>
         {navBannersBook.map((banner, index) => (
           <li
             key={index}

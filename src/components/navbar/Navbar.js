@@ -3,8 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useTheme } from '../../ThemeContext';
 
 const Navbar = () => {
-  const { currentUser, handleLogoutButton, navActive} =
-    useTheme();
+  const { currentUser, handleLogoutButton, navActive } = useTheme();
 
   return (
     <ul className='Navbar'>
@@ -29,21 +28,8 @@ const Navbar = () => {
           </NavLink>
         </li>
       )}
-      {currentUser.accessGroups === 'loggedOutUsers' ? (
-         !navActive[3] && (
-          <li>
-            <NavLink className='navLink' to='/login'>
-              <p>LOGIN</p>
-            </NavLink>
-          </li>
-        )
-      ) : (
-        <li>
-          <p onClick={handleLogoutButton}>LOGOUT</p>
-        </li>
-      )}
-        {/* {currentUser.accessGroups !== 'loggedInUsers' 
-       ? (
+
+      {currentUser.accessGroups !== 'loggedInUsers' ? (
         !navActive[3] && (
           <li>
             <NavLink className='navLink' to='/login'>
@@ -55,9 +41,9 @@ const Navbar = () => {
         <li>
           <p onClick={handleLogoutButton}>LOGOUT</p>
         </li>
-      )} */}
+      )}
     </ul>
   );
-}
+};
 
 export default Navbar;

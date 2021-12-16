@@ -14,15 +14,15 @@ function Book() {
   const [poems, setPoems] = useState([]);
   const book = useRef();
   const indexBook = useRef([]);
-  const { setNavActive } = useTheme();
+  const { currentUser, setNavActive } = useTheme();
 
   // const backendUrl = process.env.REACT_APP_BACKEND_URL;
   const backendUrl = 'http://localhost:9000';
 
   useEffect(() => {
     setNavActive([false, true, true, true]);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const loadPoems = async () => {
     const response = await fetch(`${backendUrl}`);
@@ -59,10 +59,13 @@ function Book() {
   let pageCounter = 0;
 
   const handleAddLike = async (poem, description) => {
+    console.log(poem.likes);
+    console.log(typeof likes);
     await fetch(`${backendUrl}/addLike/${description}/${poem._id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       likes: poem.likes,
+      body: JSON.stringify({ userName: currentUser.userName }),
     });
     (async () => {
       await loadPoems();
@@ -150,8 +153,16 @@ function Book() {
                   title={pageIndex === 0 ? poem.title : '.....'}
                   poem={poem}
                   addLike={() => {
-                    // e.stopPropagation();
-                    handleAddLike(poem, poem.description.slice(3));
+                    if (currentUser.userName === 'anonymousUser') {
+                      alert('to like the poems you must be registered');
+                    }
+                    if (
+                      poem.likes.find(
+                        (element) => element === currentUser.userName
+                      )
+                    ) {
+                      alert('you can vote only once per poem');
+                    } else handleAddLike(poem, poem.description.slice(3));
                   }}
                   text={page.map((line, index) => {
                     return (

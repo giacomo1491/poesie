@@ -11,7 +11,8 @@ const Page = React.forwardRef((props, ref) => {
         {props.pageIndex === 0 &&
           props.poem.description !== 'prefazione' &&
           props.poem.description !== 'postfazione' &&
-          props.poem.description !== 'indice' && (
+          props.poem.description !== 'indice' &&
+          props.poem.description !== 'genreChanger' && (
             <>
               <button
                 onClick={props.addLike}
@@ -24,7 +25,7 @@ const Page = React.forwardRef((props, ref) => {
           )}
       </div>
 
-      <div>{props.text}</div>
+      <div className='text'>{props.text}</div>
       <p id='pageDescription'>{props.pageDescription}</p>
       <span className='pageNumber'>{props.pageNumber}</span>
     </div>

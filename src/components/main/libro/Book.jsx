@@ -14,9 +14,7 @@ function Book() {
   const [poems, setPoems] = useState([]);
   const book = useRef();
   const indexBook = useRef([]);
-  const { currentUser, setNavActive,backendUrl } = useTheme();
-
-
+  const { currentUser, setNavActive, backendUrl, devices } = useTheme();
 
   useEffect(() => {
     setNavActive([false, true, true, true]);
@@ -44,7 +42,7 @@ function Book() {
   const navBannersBook = [
     { title: 'indice', page: 0 },
     { title: 'prefazione', page: 7 },
-    { title: 'postfazione', page: 186 },
+    { title: 'postfazione', page: 183 },
   ];
 
   const goToPoem = (poemTitle, num) => {
@@ -80,7 +78,7 @@ function Book() {
   };
 
   return (
-    <>
+    <div className='Book'>
       <ul className='bookNavbar'>
         {navBannersBook.map((banner, index) => (
           <li
@@ -92,117 +90,186 @@ function Book() {
         ))}
       </ul>
 
-      <div className='Book'>
-        {poems.length < 1 && (
-          <FadeIn transitionDuration='800'>
-            <div>
-              <FaSpinner className='spinner' />
-              <span className='loading'> Loading...</span>
-            </div>
-          </FadeIn>
-        )}
-        <HTMLFlipBook
-          ref={book}
-          onFlip={onFlip}
-          flippingTime={1250}
-          // size={"stretch"}
-          width={600}
-          height={680}
-          className='FlipBook'
-        >
-          {poems.map((poem, poemIndex) => {
-            // console.log({ pageCounter, poem: poem.title });
-            const arrOfPoemsLines = poem.text.split('\n');
-            const batchSize =
-              poem.description === 'prefazione' ||
-              poem.description === 'postfazione'
-                ? 3
-                : 16;
-            const amountBatches = Math.ceil(arrOfPoemsLines.length / batchSize);
-            const batches = [];
-            for (let i = 0; i < amountBatches; i++) {
-              const batch = arrOfPoemsLines.slice(
-                i * batchSize,
-                i * batchSize + batchSize
-              );
-              batches.push(batch);
-            }
+      {poems.length < 1 && (
+        <FadeIn transitionDuration='800'>
+          <div>
+            <FaSpinner className='spinner' />
+            <span className='loading'> Loading...</span>
+          </div>
+        </FadeIn>
+      )}
+      <HTMLFlipBook
+        ref={book}
+        onFlip={onFlip}
+        flippingTime={1250}
+        // width={(() => {
+        //   switch (useMediaQuery) {
+        //     case '(max-width: 567px)':
+        //       return 200;
+        //     case devices.mobileLandscape:
+        //       return 500;
+        //     case devices.tabletPortrait:
+        //       return 800;
+        //     case devices.tabletLandscape:
+        //       return 1000;
+        //     case devices.laptopDisplays:
+        //       return 1200;
+        //     case devices.desktopDisplays:
+        //       return 1300;
 
-            indexBook.current.push({
-              poemTitle: poem.title,
-              pageCounter,
-            });
-            pageCounter = pageCounter + amountBatches;
+        //     default:
+        //       return 600;
+        //   }
+        // })()}
+        width={(() => {
+          if (devices.iPHone4) {
+            return 300;
+          }
+          if (devices.mobilePortrait) {
+            return 320;
+          }
+          if (devices.mobileLandscape) {
+            return 500;
+          }
+          if (devices.tabletPortrait) {
+            return 700;
+          }
+          if (devices.tabletLandscape) {
+            return 800;
+          }
+          if (devices.laptopDisplays) {
+            return 1000;
+          }
+          if (devices.desktopDisplays) {
+            return 1200;
+          }
+          //   else {
+          //   return 600
+          // }
+        })()}
+        height={(() => {
+          if (devices.iPHone4) {
+            return 450;
+          }
+          if (devices.mobilePortrait) {
+            return 500;
+          }
+          if (devices.mobileLandscape) {
+            return 500;
+          }
 
-            return batches.map((page, pageIndex) => {
-              return (
-                <Page
-                  idStyle={`poem${1 + poemIndex}page${pageIndex + 1}`}
-                  key={pageIndex}
-                  pageIndex={pageIndex}
-                  pageNumber={`${1 + poemIndex}.${pageIndex + 1}`}
-                  pageDescription={
-                    (poemIndex === 79 && pageIndex === 0) ||
-                    (poemIndex === 80 && pageIndex === 0)
-                      ? ''
-                      : poem.description
+          if (devices.tabletPortrait) {
+            return 700;
+          }
+          if (devices.tabletLandscape) {
+            return 800;
+          }
+          if (devices.laptopDisplays) {
+            return 1000;
+          }
+          if (devices.desktopDisplays) {
+            return 1200;
+          }
+          //   else {
+          //   return 680
+          // }
+        })()}
+        className='FlipBook'
+      >
+        {poems.map((poem, poemIndex) => {
+          // console.log({ pageCounter, poem: poem.title });
+          const arrOfPoemsLines = poem.text.split('\n');
+          const batchSize =
+            poem.description === 'prefazione' ||
+            poem.description === 'postfazione'
+              ? 3
+              : 16;
+          const amountBatches = Math.ceil(arrOfPoemsLines.length / batchSize);
+          const batches = [];
+          for (let i = 0; i < amountBatches; i++) {
+            const batch = arrOfPoemsLines.slice(
+              i * batchSize,
+              i * batchSize + batchSize
+            );
+            batches.push(batch);
+          }
+
+          indexBook.current.push({
+            poemTitle: poem.title,
+            pageCounter,
+          });
+          pageCounter = pageCounter + amountBatches;
+
+          return batches.map((page, pageIndex) => {
+            return (
+              <Page
+                idStyle={`poem${1 + poemIndex}page${pageIndex + 1}`}
+                key={pageIndex}
+                pageIndex={pageIndex}
+                pageNumber={`${1 + poemIndex}.${pageIndex + 1}`}
+                pageDescription={
+                  (poemIndex === 79 && pageIndex === 0) ||
+                  (poemIndex === 80 && pageIndex === 0) ||
+                  poem.description === 'genreChanger'
+                    ? ''
+                    : poem.description
+                }
+                title={pageIndex === 0 ? poem.title : '.....'}
+                poem={poem}
+                alert={poem.alert}
+                addLike={() => {
+                  if (currentUser.userName === 'anonymousUser') {
+                    alert('to like the poems you must be registered');
+                    setNavActive([false, true, false, false]);
                   }
-                  title={pageIndex === 0 ? poem.title : '.....'}
-                  poem={poem}
-                  alert={poem.alert}
-                  addLike={() => {
-                    if (currentUser.userName === 'anonymousUser') {
-                      alert('to like the poems you must be registered');
-                      setNavActive([false, true, false, false]);
-                    }
-                    if (
-                      poem.likes.find(
-                        (element) => element === currentUser.userName
-                      )
-                    ) {
-                      alert('you can vote only once per poem');
-                    } else handleAddLike(poem, poem.description.slice(3));
-                  }}
-                  text={page.map((line, index) => {
-                    return (
-                      <>
-                        {poem.description === 'indice' ? (
-                          <p
-                            className='bookIndexTitle'
-                            onClick={() => {
-                              if (pageIndex === 0 && poemIndex === 0) {
-                                goToPoem(line, 0);
-                              }
-                              if (pageIndex === 1) {
-                                goToPoem(line, -2);
-                              }
-                              if (
-                                (pageIndex === 0 &&
-                                  poem.title === 'Di Terre') ||
-                                (pageIndex === 0 && poem.title === 'Di Amori')
-                              ) {
-                                goToPoem(line, 2);
-                              }
-                            }}
-                            key={index}
-                            style={{ cursor: 'grabbing' }}
-                          >
-                            - {line}
-                          </p>
-                        ) : (
-                          <p key={index}>{line}</p>
-                        )}
-                        <br />
-                      </>
-                    );
-                  })}
-                />
-              );
-            });
-          })}
-        </HTMLFlipBook>
-      </div>
-    </>
+                  if (
+                    poem.likes.find(
+                      (element) => element === currentUser.userName
+                    )
+                  ) {
+                    alert('you can vote only once per poem');
+                  } else handleAddLike(poem, poem.description.slice(3));
+                }}
+                text={page.map((line, index) => {
+                  return (
+                    <>
+                      {poem.description === 'indice' ? (
+                        <p
+                          className='bookIndexTitle'
+                          onClick={() => {
+                            if (pageIndex === 0 && poemIndex === 0) {
+                              goToPoem(line, 0);
+                            }
+                            if (pageIndex === 1) {
+                              goToPoem(line, -2);
+                            }
+                            if (
+                              (pageIndex === 0 && poem.title === 'Di Terre') ||
+                              (pageIndex === 0 && poem.title === 'Di Amori')
+                            ) {
+                              goToPoem(line, 2);
+                            }
+                          }}
+                          key={index}
+                          style={{ cursor: 'grabbing' }}
+                        >
+                          - {line}
+                        </p>
+                      ) : (
+                        <p className='poemsLine' key={index}>
+                          {line}
+                        </p>
+                      )}
+                      <br />
+                    </>
+                  );
+                })}
+              />
+            );
+          });
+        })}
+      </HTMLFlipBook>
+    </div>
   );
 }
 

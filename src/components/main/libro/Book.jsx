@@ -122,57 +122,98 @@ function Book() {
         //   }
         // })()}
         width={(() => {
-          if (devices.iPHone4) {
+          if (devices.galaxyFold) {
+            return 265;
+          }
+          if (devices.galaxyS3) {
             return 300;
           }
-          if (devices.mobilePortrait) {
-            return 320;
-          }
-          if (devices.mobileLandscape) {
+          if (devices.iPHone4) {
             return 500;
           }
-          if (devices.tabletPortrait) {
+          if (devices.pixel2) {
             return 700;
           }
-          if (devices.tabletLandscape) {
+          if (devices.pixel2XL) {
             return 800;
           }
-          if (devices.laptopDisplays) {
+          if (devices.iPhone5) {
             return 1000;
           }
-          if (devices.desktopDisplays) {
+          if (devices.iPhone6) {
             return 1200;
           }
-          //   else {
-          //   return 600
-          // }
+          if (devices.iPhone6Plus) {
+            return 1200;
+          }
+          if (devices.iPhone10) {
+            return 1200;
+          }
+          if (devices.iPad) {
+            return 1200;
+          }
+          if (devices.iPadPro) {
+            return 1200;
+          }
+          if (devices.surfaceDuo) {
+            return 1200;
+          }
+          if (devices.nestHub) {
+            return 1200;
+          }
+          if (devices.nestHubMax) {
+            return 1200;
+          }
+          if (devices.laptopDisplays) {
+            return 1200;
+          }
         })()}
         height={(() => {
+          if (devices.galaxyFold) {
+            return 265;
+          }
+          if (devices.galaxyS3) {
+            return 300;
+          }
           if (devices.iPHone4) {
-            return 450;
-          }
-          if (devices.mobilePortrait) {
             return 500;
           }
-          if (devices.mobileLandscape) {
-            return 500;
-          }
-
-          if (devices.tabletPortrait) {
+          if (devices.pixel2) {
             return 700;
           }
-          if (devices.tabletLandscape) {
+          if (devices.pixel2XL) {
             return 800;
           }
-          if (devices.laptopDisplays) {
+          if (devices.iPhone5) {
             return 1000;
           }
-          if (devices.desktopDisplays) {
+          if (devices.iPhone6) {
             return 1200;
           }
-          //   else {
-          //   return 680
-          // }
+          if (devices.iPhone6Plus) {
+            return 1200;
+          }
+          if (devices.iPhone10) {
+            return 1200;
+          }
+          if (devices.iPad) {
+            return 1200;
+          }
+          if (devices.iPadPro) {
+            return 1200;
+          }
+          if (devices.surfaceDuo) {
+            return 1200;
+          }
+          if (devices.nestHub) {
+            return 1200;
+          }
+          if (devices.nestHubMax) {
+            return 1200;
+          }
+          if (devices.laptopDisplays) {
+            return 1200;
+          }
         })()}
         className='FlipBook'
       >

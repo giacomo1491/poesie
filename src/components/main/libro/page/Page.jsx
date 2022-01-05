@@ -5,6 +5,7 @@ const Page = React.forwardRef((props, ref) => {
   // console.log(props);
   return (
     <div className='Page' id={props.idStyle} ref={ref}>
+      <div className='text'>
       <div className='imgTitleLikeCounteriner'>
         <h2 style={{ color: 'red' }}>{props.title} </h2>
 
@@ -25,7 +26,7 @@ const Page = React.forwardRef((props, ref) => {
           )}
       </div>
 
-      <div className='text'>{props.text}</div>
+      {props.text}</div>
       <p id='pageDescription'>{props.pageDescription}</p>
       <span className='pageNumber'>{props.pageNumber}</span>
     </div>

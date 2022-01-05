@@ -1,12 +1,13 @@
 .Page {
   border: 3px solid black;
   background-color: white;
+  padding: 1%;
   // background-image: url('https://images.unsplash.com/photo-1575479971017-542ec1ce42eb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80');
   .imgTitleLikeCounteriner {
     display: flex;
 
     h2 {
-      margin: 0 5%;
+      margin: 1% 1% 3.5% 0;
       font-size: clamp(1.3em, 1.4vw, 2em);
       font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
         'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -33,9 +34,9 @@
     }
   }
 
-  div {
-    margin: 7% 15%;
-    font-size: clamp(1.1em, 1.1vw, 2em);
+  .text {
+    margin: 0 5% 0 5%;
+    font-size: clamp(0.6em, 1.1vw, 2em);
     align-items: center;
   }
   .pageNumber {
@@ -54,19 +55,19 @@
   }
 }
 
-#poem1page1 {
-  h2 {
-    margin: 6% 22%;
-    font-size: clamp(1.3em, 1.4vw, 2em);
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-      'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-weight: bolder;
-  }
-  div {
-    margin: 2% 7%;
-    font-size: clamp(0.8em, 1.1vw, 2em);
-  }
-}
+// #poem1page1 {
+//   h2 {
+//     margin: 6% 22%;
+//     font-size: clamp(1.3em, 1.4vw, 2em);
+//     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+//       'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+//     font-weight: bolder;
+//   }
+//   div {
+//     margin: 2% 7%;
+//     font-size: clamp(0.8em, 1.1vw, 2em);
+//   }
+// }
 
 // #poem80page1 {
 //   background-image: url('../../../../assets/images/copertina4.jpg');

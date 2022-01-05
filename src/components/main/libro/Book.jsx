@@ -49,8 +49,6 @@ function Book() {
     const current = indexBook.current;
     const poemFound = current.find((item) => item.poemTitle === poemTitle);
     poemFound && book.current.pageFlip().flip(poemFound.pageCounter + num);
-    // console.log(poemFound);
-    // console.log({ poemTitle });
   };
 
   let pageCounter = 0;
@@ -102,117 +100,95 @@ function Book() {
         ref={book}
         onFlip={onFlip}
         flippingTime={1250}
-        // width={(() => {
-        //   switch (useMediaQuery) {
-        //     case '(max-width: 567px)':
-        //       return 200;
-        //     case devices.mobileLandscape:
-        //       return 500;
-        //     case devices.tabletPortrait:
-        //       return 800;
-        //     case devices.tabletLandscape:
-        //       return 1000;
-        //     case devices.laptopDisplays:
-        //       return 1200;
-        //     case devices.desktopDisplays:
-        //       return 1300;
-
-        //     default:
-        //       return 600;
-        //   }
-        // })()}
         width={(() => {
           if (devices.galaxyFold) {
-            return 265;
+            return 255;
           }
           if (devices.galaxyS3) {
-            return 300;
+            return 320;
           }
           if (devices.iPHone4) {
-            return 500;
+            return 290;
           }
           if (devices.pixel2) {
-            return 700;
+            return 390;
           }
           if (devices.pixel2XL) {
-            return 800;
+            return 390;
           }
           if (devices.iPhone5) {
-            return 1000;
+            return 300;
           }
           if (devices.iPhone6) {
-            return 1200;
-          }
-          if (devices.iPhone6Plus) {
-            return 1200;
+            return 355;
           }
           if (devices.iPhone10) {
-            return 1200;
+            return 355;
           }
           if (devices.iPad) {
-            return 1200;
+            return 700;
           }
           if (devices.iPadPro) {
-            return 1200;
-          }
-          if (devices.surfaceDuo) {
-            return 1200;
+            return 500;
           }
           if (devices.nestHub) {
-            return 1200;
+            return 500;
           }
           if (devices.nestHubMax) {
-            return 1200;
+            return 610;
           }
           if (devices.laptopDisplays) {
-            return 1200;
+            return 600;
+          }
+          if (devices.desktopDisplays) {
+            return 700;
           }
         })()}
         height={(() => {
           if (devices.galaxyFold) {
-            return 265;
+            return 465;
           }
           if (devices.galaxyS3) {
-            return 300;
-          }
-          if (devices.iPHone4) {
             return 500;
           }
+          if (devices.iPHone4) {
+            return 405;
+          }
           if (devices.pixel2) {
-            return 700;
+            return 500;
           }
           if (devices.pixel2XL) {
-            return 800;
+            return 630;
           }
           if (devices.iPhone5) {
-            return 1000;
+            return 500;
           }
           if (devices.iPhone6) {
-            return 1200;
+            return 550;
           }
           if (devices.iPhone6Plus) {
             return 1200;
           }
           if (devices.iPhone10) {
-            return 1200;
+            return 600;
           }
           if (devices.iPad) {
-            return 1200;
+            return 900;
           }
           if (devices.iPadPro) {
-            return 1200;
-          }
-          if (devices.surfaceDuo) {
-            return 1200;
+            return 900;
           }
           if (devices.nestHub) {
-            return 1200;
+            return 500;
           }
           if (devices.nestHubMax) {
-            return 1200;
+            return 630;
           }
           if (devices.laptopDisplays) {
-            return 1200;
+            return 650;
+          }
+          if (devices.desktopDisplays) {
+            return 1150;
           }
         })()}
         className='FlipBook'

@@ -13,23 +13,24 @@ export function ThemeProvider({ children }) {
   const [password, setPassword] = useState('');
   const [navActive, setNavActive] = useState([false, false, false, false]);
   const devices = {
-   
-    galaxyFold: useMediaQuery('(max-width: 280px) and (max-height: 653px)'),
-    galaxyS3: useMediaQuery('(max-width: 360px) and (max-height: 640px)'),
+    galaxyFold: useMediaQuery('(max-width: 280px) and (min-height: 653px)'),
+    galaxyS3: useMediaQuery('(max-width: 360px) and (min-height: 639px)'),
     iPHone4: useMediaQuery('(max-width: 320px) and (max-height: 480px)'),
-    pixel2: useMediaQuery('(max-width: 411px) and (max-height: 731px)'),
-    pixel2XL: useMediaQuery('(max-width: 411px) and (max-height: 823px)'),
+    pixel2: useMediaQuery(
+      '(min-width: 410px) and (max-width: 767px) and (max-height: 731px)'
+    ),
+    pixel2XL: useMediaQuery(
+      '(min-width: 410px) and (max-width: 767px) and (max-height: 823px)'
+    ),
     iPhone5: useMediaQuery('(max-width: 320px) and (max-height: 568px)'),
     iPhone6: useMediaQuery('(max-width: 375px) and (max-height: 667px)'),
-    iPhone6Plus: useMediaQuery('(max-width: 414px) and (max-height: 736px)'),
     iPhone10: useMediaQuery('(max-width: 375px) and (max-height: 812px)'),
     iPad: useMediaQuery('(max-width: 768px) and (max-height: 1024px)'),
-    iPadPro: useMediaQuery('(max-width: 1024px) and (max-height: 1366px)'),
-    surfaceDuo: useMediaQuery('(max-width: 540px) and (max-height: 720px)'),
-    nestHub: useMediaQuery('(max-width: 1024px) and (max-height: 600px)'),
-    nestHubMax: useMediaQuery('(max-width: 1280px) and (max-height: 800px)'),
+    iPadPro: useMediaQuery('(max-width: 1024px) and (min-height: 1365px)'),
+    nestHub: useMediaQuery('(min-width: 1024px)  and (max-height: 600px)'),
+    nestHubMax: useMediaQuery('(min-width: 1279px) and (max-height: 800px)'),
     laptopDisplays: useMediaQuery(
-      '(min-width: 1366px) and (max-width: 1679px)'
+      '(min-width: 1025px) and (max-width: 1679px)'
     ),
     desktopDisplays: useMediaQuery('(min-width: 1680px)'),
   };

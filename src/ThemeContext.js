@@ -15,7 +15,7 @@ export function ThemeProvider({ children }) {
   const devices = {
     galaxyFold: useMediaQuery('(max-width: 280px) and (min-height: 653px)'),
     galaxyS3: useMediaQuery('(max-width: 360px) and (min-height: 639px)'),
-    iPHone4: useMediaQuery('(max-width: 320px) and (max-height: 480px)'),
+    iPhone4: useMediaQuery('(max-width: 320px) and (max-height: 480px)'),
     pixel2: useMediaQuery(
       '(min-width: 410px) and (max-width: 767px) and (max-height: 731px)'
     ),

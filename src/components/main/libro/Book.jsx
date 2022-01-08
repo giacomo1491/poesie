@@ -107,7 +107,7 @@ function Book() {
           if (devices.galaxyS3) {
             return 320;
           }
-          if (devices.iPHone4) {
+          if (devices.iPhone4) {
             return 290;
           }
           if (devices.pixel2) {
@@ -151,7 +151,7 @@ function Book() {
           if (devices.galaxyS3) {
             return 500;
           }
-          if (devices.iPHone4) {
+          if (devices.iPhone4) {
             return 405;
           }
           if (devices.pixel2) {

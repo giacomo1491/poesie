@@ -1,28 +1,33 @@
 .Book {
-  width: 100%;
+  max-width: 100%;
   height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  overflow-y: auto !important;
   .bookNavbar {
     position: absolute;
     top: 2.5%;
     right: 8%;
     display: flex;
     justify-content: right;
-    width: 45%;
+    max-width: 60%;
     p {
       // border: 1px solid black;
       // background-color: white;
       // padding: 2%;
       color: rgb(58, 13, 13);
-      font-size: clamp(0.9em, 2vw, 2.5em);
+      font-size: clamp(0.8em, 2vw, 2.5em);
       font-weight: bold;
       font-style: italic;
-      margin: 0 1vw;
+      margin: 0 2vw;
       cursor: grabbing;
+    }
+    @media only screen and (max-width: 330px) {
+      p {
+        font-size: 0.6em;
+      }
     }
   }
 

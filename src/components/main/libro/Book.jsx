@@ -6,6 +6,7 @@ import React, { useCallback } from 'react';
 import FadeIn from 'react-fade-in';
 import { FaSpinner } from 'react-icons/fa';
 import { useTheme } from '../../../ThemeContext';
+import { useNavigate } from 'react-router-dom';
 
 // https://www.npmjs.com/package/react-pageflip
 // https://reactjs.org/docs/forwarding-refs.html
@@ -15,6 +16,7 @@ function Book() {
   const book = useRef();
   const indexBook = useRef([]);
   const { currentUser, setNavActive, backendUrl, devices } = useTheme();
+  let navigate = useNavigate();
 
   useEffect(() => {
     setNavActive([false, true, true, true]);
@@ -236,10 +238,12 @@ function Book() {
                 alert={poem.alert}
                 addLike={() => {
                   if (currentUser.userName === 'anonymousUser') {
-                    alert('to like the poems you must be registered');
+                    navigate('/');
                     setNavActive([false, true, false, false]);
+                    alert('to like the poems you must be registered');
                   }
                   if (
+                    currentUser.userName !== 'anonymousUser' &&
                     poem.likes.find(
                       (element) => element === currentUser.userName
                     )

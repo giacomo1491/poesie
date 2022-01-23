@@ -101,7 +101,7 @@ function Book() {
           window.outerWidth >= 1000 && window.outerWidth <= 1700
             ? bookWidth / 2
             : window.outerWidth >= 1701
-            ? bookWidth / 2.5
+            ? bookWidth / 2.9
             : bookWidth
         }
         height={

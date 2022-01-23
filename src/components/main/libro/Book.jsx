@@ -72,10 +72,10 @@ function Book() {
 
   return (
     <div className="Book">
-      <p>{window.innerWidth}</p>
-      <p>{window.outerWidth}</p>
-      <p>{window.innerHeight}</p>
-      <p>{window.outerHeight}</p>
+      {/* <p>{window.innerWidth}</p> */}
+      {/* <p>{window.outerWidth}</p> */}
+      {/* <p>{window.innerHeight}</p>
+      <p>{window.outerHeight}</p> */}
       <ul className="bookNavbar">
         {navBannersBook.map((banner, index) => (
           <li
@@ -100,15 +100,15 @@ function Book() {
         onFlip={onFlip}
         flippingTime={1250}
         width={
-          window.outerWidth >= 1000 && window.outerWidth <= 1499
+          window.outerWidth >= 1000 && window.outerWidth <= 1700
             ? bookWidth / 2
-            : window.outerWidth >= 1500
-            ? bookWidth / 2.2
+            : window.outerWidth >= 1701
+            ? bookWidth / 2.9
             : bookWidth
         }
         height={
           window.innerHeight >= 700 && window.innerHeight >= window.innerWidth
-            ? bookHeight / 1.4
+            ? bookHeight / 1.2
             : bookHeight
         }
         className="FlipBook"

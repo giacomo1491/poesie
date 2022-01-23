@@ -73,6 +73,7 @@ function Book() {
   return (
     <div className="Book">
       <p>{window.innerWidth}</p>
+      <p>{window.outerWidth}</p>
       <ul className="bookNavbar">
         {navBannersBook.map((banner, index) => (
           <li

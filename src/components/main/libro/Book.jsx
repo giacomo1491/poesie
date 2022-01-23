@@ -19,8 +19,6 @@ function Book() {
   let navigate = useNavigate();
   let bookWidth = window.outerWidth - window.outerWidth / 10;
   let bookHeight = window.innerHeight - window.innerHeight / 7;
-  console.log({ bookWidth }, { bookHeight });
-  // console.log(window.innerWidth);
   useEffect(() => {
     setNavActive([false, true, true, true]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -76,6 +74,7 @@ function Book() {
       {/* <p>{window.outerWidth}</p> */}
       {/* <p>{window.innerHeight}</p>
       <p>{window.outerHeight}</p> */}
+
       <ul className="bookNavbar">
         {navBannersBook.map((banner, index) => (
           <li
@@ -103,7 +102,7 @@ function Book() {
           window.outerWidth >= 1000 && window.outerWidth <= 1700
             ? bookWidth / 2
             : window.outerWidth >= 1701
-            ? bookWidth / 2.9
+            ? bookWidth / 2.7
             : bookWidth
         }
         height={

@@ -18,7 +18,7 @@ function Book() {
   const { currentUser, setNavActive, backendUrl } = useTheme();
   let navigate = useNavigate();
   let bookWidth = window.innerWidth - window.innerWidth / 10;
-  let bookHeight = window.innerHeight - window.innerHeight / 4;
+  let bookHeight = window.innerHeight - window.innerHeight / 6;
   console.log({ bookWidth }, { bookHeight });
   // console.log(window.innerWidth);
   useEffect(() => {
@@ -47,7 +47,7 @@ function Book() {
   const navBannersBook = [
     { title: "indice", page: 0 },
     { title: "prefazione", page: 7 },
-    { title: "postfazione", page: 183 },
+    { title: "postfazione", page: 180 },
   ];
 
   const goToPoem = (poemTitle, num) => {
@@ -102,7 +102,11 @@ function Book() {
             ? bookWidth / 2.2
             : bookWidth
         }
-        height={window.innerHeight >= 1000 ? bookHeight / 1.2 : bookHeight}
+        height={
+          window.innerHeight >= 700 && window.innerHeight >= window.innerWidth
+            ? bookHeight / 1.4
+            : bookHeight
+        }
         className="FlipBook"
       >
         {poems.map((poem, poemIndex) => {
@@ -111,7 +115,7 @@ function Book() {
           const batchSize =
             poem.description === "prefazione" ||
             poem.description === "postfazione"
-              ? 5
+              ? 4
               : 16;
           const amountBatches = Math.ceil(arrOfPoemsLines.length / batchSize);
           const batches = [];

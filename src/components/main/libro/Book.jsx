@@ -17,7 +17,7 @@ function Book() {
   const indexBook = useRef([]);
   const { currentUser, setNavActive, backendUrl } = useTheme();
   let navigate = useNavigate();
-  let bookWidth = window.innerWidth - window.innerWidth / 10;
+  let bookWidth = window.outerWidth - window.outerWidth / 10;
   let bookHeight = window.innerHeight - window.innerHeight / 7;
   console.log({ bookWidth }, { bookHeight });
   // console.log(window.innerWidth);
@@ -74,6 +74,8 @@ function Book() {
     <div className="Book">
       <p>{window.innerWidth}</p>
       <p>{window.outerWidth}</p>
+      <p>{window.innerHeight}</p>
+      <p>{window.outerHeight}</p>
       <ul className="bookNavbar">
         {navBannersBook.map((banner, index) => (
           <li
@@ -98,9 +100,9 @@ function Book() {
         onFlip={onFlip}
         flippingTime={1250}
         width={
-          window.innerWidth >= 1000 && window.innerWidth <= 1499
-            ? bookWidth / 2.2
-            : window.innerWidth >= 1500
+          window.outerWidth >= 1000 && window.outerWidth <= 1499
+            ? bookWidth / 2
+            : window.outerWidth >= 1500
             ? bookWidth / 2.2
             : bookWidth
         }

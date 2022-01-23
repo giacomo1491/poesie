@@ -98,7 +98,7 @@ function Book() {
         flippingTime={1250}
         width={
           window.innerWidth >= 1000 && window.innerWidth <= 1499
-            ? bookWidth / 2
+            ? bookWidth / 2.2
             : window.innerWidth >= 1500
             ? bookWidth / 2.2
             : bookWidth

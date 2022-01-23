@@ -18,7 +18,7 @@ function Book() {
   const { currentUser, setNavActive, backendUrl } = useTheme();
   let navigate = useNavigate();
   let bookWidth = window.innerWidth - window.innerWidth / 10;
-  let bookHeight = window.innerHeight - window.innerHeight / 6;
+  let bookHeight = window.innerHeight - window.innerHeight / 7;
   console.log({ bookWidth }, { bookHeight });
   // console.log(window.innerWidth);
   useEffect(() => {
@@ -72,6 +72,7 @@ function Book() {
 
   return (
     <div className="Book">
+      <p>{window.innerWidth}</p>
       <ul className="bookNavbar">
         {navBannersBook.map((banner, index) => (
           <li

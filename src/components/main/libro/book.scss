@@ -5,7 +5,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow-y: auto !important;
+  // overflow-y: scroll !important;
+  // overflow-x: hidden !important;
   .bookNavbar {
     position: absolute;
     top: 2.5%;

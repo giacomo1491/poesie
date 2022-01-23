@@ -1,12 +1,12 @@
-import { useState, useEffect, useRef } from 'react';
-import HTMLFlipBook from 'react-pageflip';
-import './book.scss';
-import Page from './page/Page';
-import React, { useCallback } from 'react';
-import FadeIn from 'react-fade-in';
-import { FaSpinner } from 'react-icons/fa';
-import { useTheme } from '../../../ThemeContext';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect, useRef } from "react";
+import HTMLFlipBook from "react-pageflip";
+import "./book.scss";
+import Page from "./page/Page";
+import React, { useCallback } from "react";
+import FadeIn from "react-fade-in";
+import { FaSpinner } from "react-icons/fa";
+import { useTheme } from "../../../ThemeContext";
+import { useNavigate } from "react-router-dom";
 
 // https://www.npmjs.com/package/react-pageflip
 // https://reactjs.org/docs/forwarding-refs.html
@@ -15,9 +15,12 @@ function Book() {
   const [poems, setPoems] = useState([]);
   const book = useRef();
   const indexBook = useRef([]);
-  const { currentUser, setNavActive, backendUrl, devices } = useTheme();
+  const { currentUser, setNavActive, backendUrl } = useTheme();
   let navigate = useNavigate();
-
+  let bookWidth = window.innerWidth - window.innerWidth / 10;
+  let bookHeight = window.innerHeight - window.innerHeight / 4;
+  console.log({ bookWidth }, { bookHeight });
+  // console.log(window.innerWidth);
   useEffect(() => {
     setNavActive([false, true, true, true]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -42,9 +45,9 @@ function Book() {
   }, []);
 
   const navBannersBook = [
-    { title: 'indice', page: 0 },
-    { title: 'prefazione', page: 7 },
-    { title: 'postfazione', page: 183 },
+    { title: "indice", page: 0 },
+    { title: "prefazione", page: 7 },
+    { title: "postfazione", page: 183 },
   ];
 
   const goToPoem = (poemTitle, num) => {
@@ -57,29 +60,19 @@ function Book() {
 
   const handleAddLike = async (poem, description) => {
     await fetch(`${backendUrl}/addLike/${description}/${poem._id}`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
       likes: poem.likes,
       body: JSON.stringify({ userName: currentUser.userName }),
     });
     (async () => {
       await loadPoems();
     })();
-
-    // 2. Solution to see the likes without refresh the page
-
-    // const response = await fetch(`${backendUrl}/addLike/acque/${poem._id}`, {
-    //   method: 'PATCH',
-    //   headers: { 'Content-Type': 'application/json' },
-    // });
-    // const data = await response.json();
-    // poems.find((m) => m._id === poem._id).likes = data.likes
-    //   setPoems((prev) => [...prev, ...poems]);
   };
 
   return (
-    <div className='Book'>
-      <ul className='bookNavbar'>
+    <div className="Book">
+      <ul className="bookNavbar">
         {navBannersBook.map((banner, index) => (
           <li
             key={index}
@@ -91,10 +84,10 @@ function Book() {
       </ul>
 
       {poems.length < 1 && (
-        <FadeIn transitionDuration='800'>
+        <FadeIn transitionDuration="800">
           <div>
-            <FaSpinner className='spinner' />
-            <span className='loading'> Loading...</span>
+            <FaSpinner className="spinner" />
+            <span className="loading"> Loading...</span>
           </div>
         </FadeIn>
       )}
@@ -102,106 +95,23 @@ function Book() {
         ref={book}
         onFlip={onFlip}
         flippingTime={1250}
-        width={(() => {
-          if (devices.galaxyFold) {
-            return 255;
-          }
-          if (devices.galaxyS3) {
-            return 320;
-          }
-          if (devices.iPhone4) {
-            return 290;
-          }
-          if (devices.pixel2) {
-            return 390;
-          }
-          if (devices.pixel2XL) {
-            return 390;
-          }
-          if (devices.iPhone5) {
-            return 300;
-          }
-          if (devices.iPhone6) {
-            return 355;
-          }
-          if (devices.iPhone10) {
-            return 355;
-          }
-          if (devices.iPad) {
-            return 700;
-          }
-          if (devices.iPadPro) {
-            return 500;
-          }
-          if (devices.nestHub) {
-            return 500;
-          }
-          if (devices.nestHubMax) {
-            return 610;
-          }
-          if (devices.laptopDisplays) {
-            return 600;
-          }
-          if (devices.desktopDisplays) {
-            return 700;
-          }
-        })()}
-        height={(() => {
-          if (devices.galaxyFold) {
-            return 465;
-          }
-          if (devices.galaxyS3) {
-            return 500;
-          }
-          if (devices.iPhone4) {
-            return 405;
-          }
-          if (devices.pixel2) {
-            return 500;
-          }
-          if (devices.pixel2XL) {
-            return 630;
-          }
-          if (devices.iPhone5) {
-            return 500;
-          }
-          if (devices.iPhone6) {
-            return 550;
-          }
-          if (devices.iPhone6Plus) {
-            return 1200;
-          }
-          if (devices.iPhone10) {
-            return 600;
-          }
-          if (devices.iPad) {
-            return 900;
-          }
-          if (devices.iPadPro) {
-            return 900;
-          }
-          if (devices.nestHub) {
-            return 500;
-          }
-          if (devices.nestHubMax) {
-            return 630;
-          }
-          if (devices.laptopDisplays) {
-            return 650;
-          }
-          if (devices.desktopDisplays) {
-            return 1150;
-          }
-        })()}
-        className='FlipBook'
+        width={
+          window.innerWidth >= 1000 && window.innerWidth <= 1499
+            ? bookWidth / 2
+            : window.innerWidth >= 1500
+            ? bookWidth / 2.2
+            : bookWidth
+        }
+        height={window.innerHeight >= 1000 ? bookHeight / 1.2 : bookHeight}
+        className="FlipBook"
       >
         {poems.map((poem, poemIndex) => {
           // console.log({ pageCounter, poem: poem.title });
-          const arrOfPoemsLines = poem.text.split('\n');
+          const arrOfPoemsLines = poem.text.split("\n");
           const batchSize =
-            poem.description === 'prefazione' ||
-            poem.description === 'postfazione'
-              ? 3
+            poem.description === "prefazione" ||
+            poem.description === "postfazione"
+              ? 5
               : 16;
           const amountBatches = Math.ceil(arrOfPoemsLines.length / batchSize);
           const batches = [];
@@ -229,34 +139,44 @@ function Book() {
                 pageDescription={
                   (poemIndex === 79 && pageIndex === 0) ||
                   (poemIndex === 80 && pageIndex === 0) ||
-                  poem.description === 'genreChanger'
-                    ? ''
+                  poem.description === "genreChanger"
+                    ? ""
                     : poem.description
                 }
-                title={pageIndex === 0 ? poem.title : '.....'}
+                title={
+                  pageIndex === 0
+                    ? poem.title
+                    : (poem.description === "indice" ||
+                        poem.description === "prefazione" ||
+                        poem.description === "postfazione") &&
+                      pageIndex !== 0
+                    ? ""
+                    : "....."
+                }
+                titleMargin={poem.description === "indice" ? "6.5%" : "5%"}
                 poem={poem}
                 alert={poem.alert}
                 addLike={() => {
-                  if (currentUser.userName === 'anonymousUser') {
-                    navigate('/');
+                  if (currentUser.userName === "anonymousUser") {
+                    navigate("/");
                     setNavActive([false, true, false, false]);
-                    alert('to like the poems you must be registered');
+                    alert("to like the poems you must be registered");
                   }
                   if (
-                    currentUser.userName !== 'anonymousUser' &&
+                    currentUser.userName !== "anonymousUser" &&
                     poem.likes.find(
                       (element) => element === currentUser.userName
                     )
                   ) {
-                    alert('you can vote only once per poem');
+                    alert("you can vote only once per poem");
                   } else handleAddLike(poem, poem.description.slice(3));
                 }}
                 text={page.map((line, index) => {
                   return (
                     <>
-                      {poem.description === 'indice' ? (
+                      {poem.description === "indice" ? (
                         <p
-                          className='bookIndexTitle'
+                          className="bookIndexTitle"
                           onClick={() => {
                             if (pageIndex === 0 && poemIndex === 0) {
                               goToPoem(line, 0);
@@ -265,19 +185,19 @@ function Book() {
                               goToPoem(line, -2);
                             }
                             if (
-                              (pageIndex === 0 && poem.title === 'Di Terre') ||
-                              (pageIndex === 0 && poem.title === 'Di Amori')
+                              (pageIndex === 0 && poem.title === "Di Terre") ||
+                              (pageIndex === 0 && poem.title === "Di Amori")
                             ) {
                               goToPoem(line, 2);
                             }
                           }}
                           key={index}
-                          style={{ cursor: 'grabbing' }}
+                          style={{ cursor: "grabbing" }}
                         >
                           - {line}
                         </p>
                       ) : (
-                        <p className='poemsLine' key={index}>
+                        <p className="poemsLine" key={index}>
                           {line}
                         </p>
                       )}

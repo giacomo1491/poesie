@@ -1,5 +1,4 @@
 import React from "react";
-import "./page.scss";
 
 const Page = React.forwardRef((props, ref) => {
   // console.log(props);

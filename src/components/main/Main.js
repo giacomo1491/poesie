@@ -1,10 +1,9 @@
-import './main.scss';
 import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Book from './libro/Book';
-import Home from './home/Home';
-import Signup from './signup/Signup';
-import Login from './login/Login';
+import Book from './Book';
+import Home from './Home';
+import Signup from '../validation/Signup';
+import Login from '../validation/Login';
 import { useTheme } from '../../ThemeContext';
 
 // https://www.npmjs.com/package/react-pageflip

@@ -1,13 +1,12 @@
 import React from 'react';
-import mail from '../../../../assets/mail.png';
-import './contatti.scss';
+// import mail from '../../assets/images/';
 
 function Contatti() {
   return (
     <div className='Contatti'>
       <p>duiliadias@gmail.com</p>
       <a className='navLink' href='mailto:duiliadias@gmail.com' target='blank'>
-        <img className='contactIcon' id='mail' src={mail} alt='mail' />
+        {/* <img className='contactIcon' id='mail' src={} alt='mail' /> */}
       </a>
     </div>
   );

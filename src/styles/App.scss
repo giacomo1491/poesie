@@ -18,6 +18,19 @@ html {
     max-height: 100vh;
 
     .App {
+      @import "./variables";
+      @import "./navbar";
+      @import "./burgerMenu";
+      @import "./main";
+      @import "./home";
+      @import "./about";
+      @import "./account";
+      @import "./contact";
+      @import "./validation";
+      @import "./signup";
+      @import "./login";
+      @import "./page";
+      @import "./book";
       // background-image: url("https://images.unsplash.com/photo-1550522667-09c9bdb293a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1631&q=80");
       background-repeat: no-repeat;
       background-size: cover;

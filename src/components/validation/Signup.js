@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import './signup.scss';
 import { useEffect, useState } from 'react';
-import { useTheme } from '../../../ThemeContext';
+import { useTheme } from '../../ThemeContext';
 // import SignupForm from "./signupForm/SignupForm";
 import { ImEyeBlocked, ImEye } from 'react-icons/im';
 

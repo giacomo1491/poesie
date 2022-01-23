@@ -1,11 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import HTMLFlipBook from "react-pageflip";
-import "./book.scss";
-import Page from "./page/Page";
+import Page from "./Page";
 import React, { useCallback } from "react";
 import FadeIn from "react-fade-in";
 import { FaSpinner } from "react-icons/fa";
-import { useTheme } from "../../../ThemeContext";
+import { useTheme } from "../../ThemeContext";
 import { useNavigate } from "react-router-dom";
 
 // https://www.npmjs.com/package/react-pageflip
@@ -102,7 +101,7 @@ function Book() {
           window.outerWidth >= 1000 && window.outerWidth <= 1700
             ? bookWidth / 2
             : window.outerWidth >= 1701
-            ? bookWidth / 2.7
+            ? bookWidth / 2.5
             : bookWidth
         }
         height={

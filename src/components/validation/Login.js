@@ -1,6 +1,5 @@
-import { useTheme } from '../../../ThemeContext';
+import { useTheme } from '../../ThemeContext';
 import { useState, useEffect } from 'react';
-import './login.scss';
 import { ImEyeBlocked, ImEye } from 'react-icons/im';
 
 function Login() {

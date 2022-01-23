@@ -27,7 +27,7 @@
     button {
       width: clamp(2.3em, 5vw, 2.9em);
       height: clamp(2.3em, 5vh, 2.7em);
-      background-image: url("../../../../assets/like.png");
+      background-image: url("../assets/like.png");
       background-size: contain ;
       background-repeat: no-repeat;
       cursor: grabbing;
@@ -92,7 +92,7 @@
 // }
 
 #poem81page1 {
-  background-image: url("../../../../assets/images/copertina4.jpg");
+  background-image: url("../assets/images/copertina4.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

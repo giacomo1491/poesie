@@ -18,10 +18,7 @@ function Book() {
   let navigate = useNavigate();
   let bookWidth = window.outerWidth - window.outerWidth / 10;
   let bookHeight = window.innerHeight - window.innerHeight / 7;
-  useEffect(() => {
-    setNavActive([false, true, true, true]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+
 
   const loadPoems = async () => {
     const response = await fetch(`${backendUrl}`);

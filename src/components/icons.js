@@ -2,11 +2,12 @@ import { MdOutlineClose } from "react-icons/md";
 import { FcHome } from "react-icons/fc";
 import { SiGnuprivacyguard } from "react-icons/si";
 import { MdManageAccounts } from "react-icons/md";
-import { GiHamburgerMenu } from "react-icons/gi";
+import { GiHamburgerMenu, GiBookCover } from "react-icons/gi";
 import { TiArrowSortedDown } from "react-icons/ti";
 import { FaHome } from "react-icons/fa";
 import { BsInfoSquareFill } from "react-icons/bs";
 import { GrContact } from "react-icons/gr";
+import { FiMail } from "react-icons/fi";
 
 const icons = {
   FcHome,
@@ -18,6 +19,8 @@ const icons = {
   FaHome,
   BsInfoSquareFill,
   GrContact,
+  GiBookCover,
+  FiMail,
 };
 
 export default icons;

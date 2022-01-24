@@ -1,19 +1,12 @@
 import { NavLink } from 'react-router-dom';
-import Contatti from './Contatti';
 import { useTheme } from '../../ThemeContext';
-import { useEffect } from 'react';
 
 
 function Home() {
-  const { currentUser, setNavActive } = useTheme();
+  const { currentUser} = useTheme();
 
-  useEffect(() => {
-    setNavActive([true, false, false, false]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
   return (
     <div className='Home'>
-      <Contatti />
       <NavLink to='/book'>
         {currentUser.userName !== 'anonymousUser' && (
           <>

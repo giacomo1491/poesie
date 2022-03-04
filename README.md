@@ -1,6 +1,6 @@
 # Poesie
 
-Poems web seite
+Poems web site
 
 ## Used NPM packages: 
 

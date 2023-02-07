@@ -5,8 +5,9 @@ import { useTheme } from '../../ThemeContext';
 import { ImEyeBlocked, ImEye } from 'react-icons/im';
 
 function SignUpForm() {
-  const { setCurrentUser, setNavActive, backendUrl } = useTheme();
+  const { setCurrentUser, backendUrl } = useTheme();
   const [userName, setUserName] = useState('');
+  const [email, setEmail] = useState("");
   const [password1, setPassword1] = useState('');
   const [password2, setPassword2] = useState('');
   const [payload, setPayload] = useState({});
@@ -14,12 +15,13 @@ function SignUpForm() {
   const [userNameIsValid, setUserNameIsValid] = useState(false);
   const [password1IsValid, setPassword1IsValid] = useState(false);
   const [password2IsValid, setPassword2IsValid] = useState(false);
+  const [emailIsValid, setEmailIsValid] = useState(false);
   const [formIsValid, setFormIsValid] = useState(false);
 
-  useEffect(() => {
-    setNavActive([false, false, true, false]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   setNavActive([false, false, true, false]);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   const clearPayload = () => {
     if (Object.keys(payload).length !== 0) {
@@ -48,11 +50,22 @@ function SignUpForm() {
 
   const handleUserName = (e) => {
     let _userName = e.target.value;
-    _userName.length >= 5 && _userName.length <= 20
+    _userName.length >= 5 && _userName.length <= 15
       ? setUserNameIsValid(true)
       : setUserNameIsValid(false);
     setUserName(_userName);
   };
+
+  const handleEmail = (e) => {
+    let _email = e.target.value;
+    if (_email !== "" && /(.+)@(.+){2,}\.(.+){2,}/.test(_email)) {
+      setEmailIsValid(true);
+    } else {
+      setEmailIsValid(false);
+    }
+    setEmail(_email);
+  };
+
 
   const handlePassword1 = (e) => {
     let _password1 = e.target.value;
@@ -90,6 +103,7 @@ function SignUpForm() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         userName,
+        email,
         password1,
         password2,
       }),
@@ -105,6 +119,7 @@ function SignUpForm() {
         const _currentUser = await data;
         setCurrentUser((prev) => ({ ...prev, ..._currentUser }));
         setUserName('');
+        setEmail('');
         setPassword1('');
         setPassword2('');
       }
@@ -122,6 +137,7 @@ function SignUpForm() {
             <input
               type='text'
               id='userName'
+              placeholder="username"
               value={userName}
               autoComplete='username'
               onChange={handleUserName}
@@ -130,6 +146,16 @@ function SignUpForm() {
           <br />
           <div className={`note ${userNameIsValid ? 'valid' : 'invalid'}`}>
             <p>allowed: 5 - 20 characters</p>
+          </div>
+          <div className={`row ${emailIsValid ? "valid" : "invalid"}`}>
+            <label htmlFor="email">E-Mail</label>
+            <input
+              type="text"
+              id="email"
+              value={email}
+              placeholder="email"
+              onChange={handleEmail}
+            />
           </div>
           <div className={`row ${password1IsValid ? 'valid' : 'invalid'}`}>
             <label htmlFor='password'>Password</label>

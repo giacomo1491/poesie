@@ -14,6 +14,7 @@ export function ThemeProvider({ children }) {
   const [currentUser, setCurrentUser] = useState({});
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [navActive, setNavActive] = useState([false, false, true, false]);
   const devices = {
     galaxyFold: useMediaQuery("(max-width: 280px) and (min-height: 653px)"),
     galaxyS3: useMediaQuery("(max-width: 360px) and (min-height: 639px)"),
@@ -37,6 +38,8 @@ export function ThemeProvider({ children }) {
     desktopDisplays: useMediaQuery("(min-width: 1680px)"),
     smallView: useMediaQuery("(max-width: 750px)"),
   };
+
+  
 
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
@@ -88,6 +91,8 @@ export function ThemeProvider({ children }) {
         devices,
         menuBookToggle,
         setMenuBookToggle,
+        navActive,
+        setNavActive,
       }}
     >
       {children}

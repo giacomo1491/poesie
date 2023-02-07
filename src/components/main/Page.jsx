@@ -13,7 +13,7 @@ const Page = React.forwardRef((props, ref) => {
           props.poem.description !== "genreChanger" && (
             <>
               <button onClick={props.addLike} className="like">
-                <span className="likesCounter">{props.poem.likes.length}</span>
+                <span className="likesCounter">{props.poem.likes?.length}</span>
                 <span className="alert">{props.alert}</span>
               </button>
             </>

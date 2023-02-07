@@ -19,7 +19,6 @@ function Book() {
   let bookWidth = window.outerWidth - window.outerWidth / 10;
   let bookHeight = window.innerHeight - window.innerHeight / 7;
 
-
   const loadPoems = async () => {
     const response = await fetch(`${backendUrl}`);
     const poemsResponse = await response.json();
@@ -57,7 +56,7 @@ function Book() {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       likes: poem.likes,
-      body: JSON.stringify({ userName: currentUser.userName }),
+      body: JSON.stringify(currentUser),
     });
     (async () => {
       await loadPoems();

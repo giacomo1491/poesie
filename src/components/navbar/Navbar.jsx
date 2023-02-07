@@ -4,6 +4,7 @@ import { useTheme } from "../../ThemeContext";
 import BurgerMenu from "./BurgerMenu";
 import icons from "../icons";
 
+
 const Navbar = () => {
   const {
     burgerMenuToggle,
@@ -11,6 +12,8 @@ const Navbar = () => {
     setValidationMenuToggle,
     menuBookToggle,
     setMenuBookToggle,
+    currentUser,
+    handleLogoutButton
   } = useTheme();
 
   const handleToggles = () => {
@@ -52,8 +55,10 @@ const Navbar = () => {
 
       {burgerMenuToggle && (
         <BurgerMenu
+          currentUser={currentUser}
           handleToggles={handleToggles}
           handleValidationToggle={handleValidationToggle}
+          handleLogoutButton={handleLogoutButton}
         />
       )}
     </div>

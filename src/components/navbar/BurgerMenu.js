@@ -1,7 +1,8 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import icons from "../icons";
 
 function BurgerMenu(props) {
+  const navigate = useNavigate();
   return (
     <ul
       className="burgerMenu"
@@ -19,16 +20,31 @@ function BurgerMenu(props) {
           <icons.FaHome className="reactIcons" /> HOME
         </NavLink>
       </li>
-      <li
-        onClick={() => {
-          props.handleToggles();
-          props.handleValidationToggle();
-        }}
-        style={{ cursor: "pointer" }}
-      >
-        <icons.SiGnuprivacyguard className="reactIcons" />
-        LOGIN
-      </li>
+      {props.currentUser.userName === "anonymousUser" ? (
+        <li
+          onClick={() => {
+            props.handleToggles();
+            props.handleValidationToggle();
+            navigate("/login");
+          }}
+          style={{ cursor: "pointer" }}
+        >
+          <icons.SiGnuprivacyguard className="reactIcons" />
+          LOGIN
+        </li>
+      ) : (
+        <li
+          onClick={() => {
+            props.handleToggles();
+            props.handleValidationToggle();
+            props.handleLogoutButton();
+          }}
+          style={{ cursor: "pointer" }}
+        >
+          <icons.BiLogOutCircle className="reactIcons" />
+          LOGOUT
+        </li>
+      )}
 
       <li onClick={props.handleToggles}>
         <NavLink className="navLink" to="/account">

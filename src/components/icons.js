@@ -8,6 +8,7 @@ import { FaHome } from "react-icons/fa";
 import { BsInfoSquareFill } from "react-icons/bs";
 import { GrContact } from "react-icons/gr";
 import { FiMail } from "react-icons/fi";
+import { BiLogOutCircle } from "react-icons/bi";
 
 const icons = {
   FcHome,
@@ -21,6 +22,7 @@ const icons = {
   GrContact,
   GiBookCover,
   FiMail,
+  BiLogOutCircle
 };
 
 export default icons;
